@@ -104,9 +104,8 @@ export default function BookingModal() {
 
   const handleSubmit = () => {
     if (!validate()) return
-    const dateStr = new Date(form.date + 'T12:00:00').toLocaleDateString('en-IN', {
-      weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
-    })
+    const d = new Date(form.date + 'T12:00:00')
+    const dateStr = `${d.getDate()}/${d.getMonth() + 1}/${String(d.getFullYear()).slice(2)}`
     const timeLabel = TIME_SLOTS.find(t => t.value === form.time)?.label ?? form.time
     const msg = [
       'HAYAT FAMILY RESTAURANT',

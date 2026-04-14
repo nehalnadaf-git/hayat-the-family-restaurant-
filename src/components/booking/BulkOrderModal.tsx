@@ -280,9 +280,8 @@ export default function BulkOrderModal() {
 
   const handleSubmit = () => {
     if (!validate()) return
-    const dateStr = new Date(form.date + 'T12:00:00').toLocaleDateString('en-IN', {
-      weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
-    })
+    const d = new Date(form.date + 'T12:00:00')
+    const dateStr = `${d.getDate()}/${d.getMonth() + 1}/${String(d.getFullYear()).slice(2)}`
     const lines: string[] = [
       'HAYAT FAMILY RESTAURANT',
       'Bulk Catering Order',
@@ -307,6 +306,7 @@ export default function BulkOrderModal() {
         const lineTotal = item.qty * item.price
         lines.push(`${itemNum}. ${item.name}`)
         lines.push(`   x${item.qty} kg  |  Rs.${item.price.toLocaleString('en-IN')}/kg  =  Rs.${lineTotal.toLocaleString('en-IN')}`)
+        lines.push('')
         itemNum++
       }
       lines.push('')
