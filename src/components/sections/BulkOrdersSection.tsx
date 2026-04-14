@@ -54,20 +54,20 @@ export default function BulkOrdersSection() {
       ref={sectionRef}
       style={{
         /* Richer, slightly lighter warm-walnut gradient */
-        background: 'linear-gradient(150deg, #3D2A18 0%, #472E1A 40%, #3D2A18 75%, #52351E 100%)',
+        background: 'linear-gradient(150deg, #1C120A 0%, #241508 40%, #1C120A 75%, #2E1A0C 100%)',
         padding: 'clamp(80px,10vw,140px) clamp(24px,5vw,80px)',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
       {/* ── Decorative lines ── */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.45), transparent)' }} />
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.22), transparent)' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.45), transparent)' }} />
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.22), transparent)' }} />
 
       {/* ── Ambient glows — richer than before ── */}
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% -10%, rgba(201,150,62,0.13) 0%, transparent 55%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: '30%', left: '-8%', width: '40%', height: '60%', background: 'radial-gradient(ellipse, rgba(201,150,62,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: '-10%', right: '-6%', width: '40%', height: '60%', background: 'radial-gradient(ellipse, rgba(201,150,62,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% -10%, rgba(203,152,115,0.13) 0%, transparent 55%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '30%', left: '-8%', width: '40%', height: '60%', background: 'radial-gradient(ellipse, rgba(203,152,115,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-10%', right: '-6%', width: '40%', height: '60%', background: 'radial-gradient(ellipse, rgba(203,152,115,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
@@ -95,7 +95,7 @@ export default function BulkOrdersSection() {
             {/* Photo banner */}
             <div style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden', marginBottom: '24px', aspectRatio: '21/8' }}>
               <Image
-                src="/images/food/beef-biryani.png"
+                src="/images/food/beef-biryani.webp"
                 alt="Hayat Bulk Biryani Catering"
                 fill
                 sizes="(max-width:900px) 100vw, 750px"
@@ -118,14 +118,14 @@ export default function BulkOrdersSection() {
               {bulkMenu.map((cat) => (
                 <div key={cat.category} style={{
                   background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(201,150,62,0.2)',
+                  border: '1px solid rgba(203,152,115,0.2)',
                   borderRadius: '6px',
                   overflow: 'hidden',
                 }}>
                   {/* Category header */}
                   <div style={{
-                    background: 'rgba(201,150,62,0.1)',
-                    borderBottom: '1px solid rgba(201,150,62,0.15)',
+                    background: 'rgba(203,152,115,0.1)',
+                    borderBottom: '1px solid rgba(203,152,115,0.15)',
                     padding: '11px 20px',
                     display: 'flex', alignItems: 'center', gap: '10px',
                   }}>
@@ -139,7 +139,7 @@ export default function BulkOrdersSection() {
                     <div key={item.name} style={{
                       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                       padding: '13px 20px',
-                      borderBottom: ii < cat.items.length - 1 ? '1px solid rgba(201,150,62,0.07)' : 'none',
+                      borderBottom: ii < cat.items.length - 1 ? '1px solid rgba(203,152,115,0.07)' : 'none',
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--color-gold)', flexShrink: 0, opacity: 0.55 }} />
@@ -164,8 +164,8 @@ export default function BulkOrdersSection() {
           {/* ── Right: CTA Panel (sticky) ── */}
           <div className="fade-up" style={{ position: 'sticky', top: '96px' }}>
             <div style={{
-              background: 'linear-gradient(145deg, rgba(201,150,62,0.13) 0%, rgba(201,150,62,0.05) 100%)',
-              border: '1px solid rgba(201,150,62,0.38)',
+              background: 'linear-gradient(145deg, rgba(203,152,115,0.13) 0%, rgba(203,152,115,0.05) 100%)',
+              border: '1px solid rgba(203,152,115,0.38)',
               borderRadius: '10px',
               padding: '36px 28px',
               textAlign: 'center',
@@ -173,11 +173,11 @@ export default function BulkOrdersSection() {
               {/* Icon halo */}
               <div style={{
                 width: '58px', height: '58px', borderRadius: '50%',
-                background: 'rgba(201,150,62,0.15)',
-                border: '1px solid rgba(201,150,62,0.32)',
+                background: 'rgba(203,152,115,0.15)',
+                border: '1px solid rgba(203,152,115,0.32)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 margin: '0 auto 22px',
-                boxShadow: '0 0 28px rgba(201,150,62,0.12)',
+                boxShadow: '0 0 28px rgba(203,152,115,0.12)',
               }}>
                 <Package size={24} color="var(--color-gold-light)" strokeWidth={1.4} />
               </div>
@@ -190,7 +190,7 @@ export default function BulkOrdersSection() {
               </p>
 
               {/* Gold divider */}
-              <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.3), transparent)', marginBottom: '28px' }} />
+              <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.3), transparent)', marginBottom: '28px' }} />
 
               {/* Primary CTA */}
               <button

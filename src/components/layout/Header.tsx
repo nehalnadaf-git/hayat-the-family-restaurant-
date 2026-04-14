@@ -123,7 +123,7 @@ export default function Header() {
                   href="/menu"
                   className="dropdown-item"
                   style={{
-                    borderBottom: '1px solid rgba(201,150,62,0.12)',
+                    borderBottom: '1px solid rgba(203,152,115,0.12)',
                     fontWeight: 700,
                     color: 'var(--color-gold-light)',
                     letterSpacing: '0.5px',
@@ -210,7 +210,7 @@ export default function Header() {
             aria-label="Close menu"
             style={{
               background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(201,150,62,0.18)',
+              border: '1px solid rgba(203,152,115,0.18)',
               borderRadius: '50%',
               width: '36px', height: '36px',
               cursor: 'pointer',
@@ -223,7 +223,7 @@ export default function Header() {
         </div>
 
         {/* Divider */}
-        <div style={{ height: '1px', background: 'linear-gradient(to right, rgba(201,150,62,0.4), transparent)', marginBottom: '32px' }} />
+        <div style={{ height: '1px', background: 'linear-gradient(to right, rgba(203,152,115,0.4), transparent)', marginBottom: '32px' }} />
 
         {/* Links */}
         <nav style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -273,7 +273,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div style={{ height: '1px', background: 'linear-gradient(to right, rgba(201,150,62,0.2), transparent)', margin: '28px 0' }} />
+        <div style={{ height: '1px', background: 'linear-gradient(to right, rgba(203,152,115,0.2), transparent)', margin: '28px 0' }} />
 
         <button
           onClick={() => { openModal(); setDrawerOpen(false) }}
@@ -311,27 +311,27 @@ export default function Header() {
           top: 0; left: 0; right: 0;
           z-index: 100;
           background: #1A1007;
-          border-bottom: 1px solid rgba(201,150,62,0.16);
+          border-bottom: 1px solid rgba(203,152,115,0.16);
           transition: box-shadow 400ms ease, border-color 400ms ease;
         }
 
         /* ── Scrolled state — deepens shadow & brightens gold line ── */
         .luxury-header.header-scrolled {
           box-shadow:
-            0 1px 0 rgba(201,150,62,0.24),
+            0 1px 0 rgba(203,152,115,0.24),
             0 4px 32px rgba(0,0,0,0.55);
-          border-bottom-color: rgba(201,150,62,0.28);
+          border-bottom-color: rgba(203,152,115,0.28);
         }
 
         /* ── Gold top pixel stripe — always visible, amplifies on scroll ── */
         .header-gold-stripe {
           height: 1px;
-          background: linear-gradient(to right, transparent, rgba(201,150,62,0.45), transparent);
+          background: linear-gradient(to right, transparent, rgba(203,152,115,0.45), transparent);
           opacity: 1;
           transition: opacity 400ms ease;
         }
         .header-scrolled .header-gold-stripe {
-          background: linear-gradient(to right, transparent, rgba(201,150,62,0.7), transparent);
+          background: linear-gradient(to right, transparent, rgba(203,152,115,0.7), transparent);
         }
 
         /* ── Inner layout ── */
@@ -378,7 +378,7 @@ export default function Header() {
         }
         .hdr-link:hover {
           color: var(--color-gold-light);
-          background: rgba(201,150,62,0.07);
+          background: rgba(203,152,115,0.07);
         }
         .hdr-link--active {
           color: var(--color-gold-light) !important;
@@ -390,7 +390,7 @@ export default function Header() {
           left: 13px;
           right: 13px;
           height: 1px;
-          background: linear-gradient(to right, transparent, rgba(201,150,62,0.7), transparent);
+          background: linear-gradient(to right, transparent, rgba(203,152,115,0.7), transparent);
         }
 
         /* ── CTA button ── */
@@ -406,7 +406,7 @@ export default function Header() {
           letter-spacing: 2px;
           text-transform: uppercase;
           color: #1C1008;
-          background: linear-gradient(135deg, #C9963E 0%, #E8BC6A 55%, #C9963E 100%);
+          background: linear-gradient(135deg, #CB9873 0%, #EBD0B9 55%, #CB9873 100%);
           background-size: 200% 200%;
           background-position: left center;
           border: none;
@@ -415,12 +415,12 @@ export default function Header() {
           text-decoration: none;
           white-space: nowrap;
           transition: background-position 400ms ease, box-shadow 300ms ease, transform 150ms ease;
-          box-shadow: 0 2px 14px rgba(201,150,62,0.25);
+          box-shadow: 0 2px 14px rgba(203,152,115,0.25);
           flex-shrink: 0;
         }
         .hdr-cta:hover {
           background-position: right center;
-          box-shadow: 0 6px 28px rgba(201,150,62,0.45);
+          box-shadow: 0 6px 28px rgba(203,152,115,0.45);
           transform: translateY(-1px);
         }
         .hdr-cta:active { transform: scale(0.97) translateY(0); }
@@ -445,7 +445,7 @@ export default function Header() {
           display: block;
           width: 44px;
           height: 1px;
-          background: linear-gradient(to right, transparent, rgba(201,150,62,0.55), transparent);
+          background: linear-gradient(to right, transparent, rgba(203,152,115,0.55), transparent);
           margin: 3px 0;
         }
 
@@ -456,7 +456,7 @@ export default function Header() {
           color: var(--color-gold);
           letter-spacing: 6px;
           line-height: 1;
-          text-shadow: 0 0 28px rgba(201,150,62,0.22);
+          text-shadow: 0 0 28px rgba(203,152,115,0.22);
         }
 
         .logo-sub {
@@ -498,7 +498,7 @@ export default function Header() {
         }
         .hdr-hamburger:hover {
           color: var(--color-gold-light);
-          background: rgba(201,150,62,0.08);
+          background: rgba(203,152,115,0.08);
         }
 
         /* ── Responsive ── */

@@ -11,13 +11,13 @@ export default function USPBar() {
   return (
     <section style={{
       background: 'linear-gradient(135deg, #FAF4E8 0%, #F4EAD5 100%)',
-      borderTop: '1px solid rgba(201,150,62,0.18)',
-      borderBottom: '1px solid rgba(201,150,62,0.15)',
+      borderTop: '1px solid rgba(203,152,115,0.18)',
+      borderBottom: '1px solid rgba(203,152,115,0.15)',
       padding: 'clamp(28px, 4vw, 52px) clamp(24px, 5vw, 80px)',
       position: 'relative',
     }}>
       {/* Subtle warm gradient accent */}
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(201,150,62,0.06) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(203,152,115,0.06) 0%, transparent 65%)', pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0' }}>
@@ -25,7 +25,7 @@ export default function USPBar() {
             <div key={usp.label} style={{
               textAlign: 'center',
               padding: '24px 20px',
-              borderRight: i < usps.length - 1 ? '1px solid rgba(28,16,8,0.1)' : 'none',
+              borderRight: i < usps.length - 1 ? '1px solid rgba(18,12,7,0.1)' : 'none',
               display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px',
             }}>
               <usp.Icon size={20} color="var(--color-copper)" strokeWidth={1.5} />

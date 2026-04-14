@@ -27,7 +27,7 @@ export default function MenuPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
             {menuCategories.map((cat) => (
               <Link key={cat.slug} href={`/menu/${cat.slug}`} style={{ textDecoration: 'none' }}>
-                <div className="category-card" style={{ borderRadius: '4px', overflow: 'hidden', border: '1px solid rgba(212,168,83,0.3)', boxShadow: '0 4px 20px rgba(44,26,14,0.08)' }}>
+                <div className="category-card" style={{ borderRadius: '4px', overflow: 'hidden', border: '1px solid rgba(212,168,83,0.3)', boxShadow: '0 4px 20px rgba(18,12,7,0.08)' }}>
                   <div style={{ position: 'relative', aspectRatio: '4/3', background: 'var(--color-charcoal)' }}>
                     <Image src={cat.image} alt={cat.name} fill sizes="(max-width:768px) 90vw, 33vw" style={{ objectFit: 'cover', opacity: 0.7 }} />
                     <div className="card-overlay" />

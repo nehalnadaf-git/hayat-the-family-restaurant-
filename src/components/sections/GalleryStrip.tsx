@@ -4,23 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { galleryItems } from '@/data/gallery'
 
-/* Subtle, tasteful tilts — feel like resting prints, not a messy pile */
 const ROTATIONS = [-2.5, 1, -1.5, 2, -1, 1.5, -2, 1, -1.5, 2]
 
 export default function GalleryStrip() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const stripRef   = useRef<HTMLDivElement>(null)
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null)
-
-  /* Fade-in observer */
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view') }),
-      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
-    )
-    sectionRef.current?.querySelectorAll('.fade-up').forEach(el => io.observe(el))
-    return () => io.disconnect()
-  }, [])
 
   /* Drag-to-scroll on desktop */
   useEffect(() => {
@@ -54,13 +43,13 @@ export default function GalleryStrip() {
       }}
     >
       {/* Gold top / bottom lines */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.28), transparent)' }} />
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(28,16,8,0.08), transparent)' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 25%, rgba(201,150,62,0.07) 0%, transparent 60%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.28), transparent)' }} />
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(18,12,7,0.08), transparent)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 25%, rgba(203,152,115,0.07) 0%, transparent 60%)', pointerEvents: 'none' }} />
 
       {/* ── Header ── */}
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-        <div className="fade-up" style={{ textAlign: 'center', padding: '0 clamp(24px,5vw,80px)', marginBottom: '64px' }}>
+        <div style={{ textAlign: 'center', padding: '0 clamp(24px,5vw,80px)', marginBottom: '64px' }}>
           <div className="ornament ornament-dark" style={{ marginBottom: '18px' }}>
             <span className="eyebrow-dark">A Feast for the Eyes</span>
           </div>
@@ -72,7 +61,7 @@ export default function GalleryStrip() {
       </div>
 
       {/* ── Photo strip ── */}
-      <div className="fade-up">
+      <div>
       <div
         ref={stripRef}
         className="gallery-strip-scroll"
@@ -114,16 +103,13 @@ export default function GalleryStrip() {
                 background:   '#FEFBF7',
                 borderRadius: '3px',
                 padding:      '10px 10px 36px',
-                border:       `1px solid ${isHov ? 'rgba(201,150,62,0.45)' : 'rgba(28,16,8,0.09)'}`,
-                /* Subtle tilt + hover lift */
-                transform: isHov
-                  ? 'rotate(0deg) translateY(-12px) scale(1.05)'
-                  : `rotate(${rot}deg)`,
-                transition: 'transform 400ms cubic-bezier(0.16,1,0.3,1), box-shadow 360ms ease, border-color 260ms',
+                border:       `1px solid ${isHov ? 'rgba(203,152,115,0.45)' : 'rgba(18,12,7,0.09)'}`,
+                transform:    `rotate(${rot}deg)`,
+                transition: 'box-shadow 360ms ease, border-color 260ms',
                 /* Professional shadow */
                 boxShadow: isHov
-                  ? '0 20px 48px rgba(28,16,8,0.20), 0 8px 20px rgba(28,16,8,0.10), 0 0 0 1.5px rgba(201,150,62,0.30)'
-                  : '0 8px 24px rgba(28,16,8,0.12), 0 2px 6px rgba(28,16,8,0.07)',
+                  ? '0 20px 48px rgba(18,12,7,0.20), 0 8px 20px rgba(18,12,7,0.10), 0 0 0 1.5px rgba(203,152,115,0.30)'
+                  : '0 8px 24px rgba(18,12,7,0.12), 0 2px 6px rgba(18,12,7,0.07)',
                 zIndex: isHov ? 10 : 1,
                 cursor: 'default',
               }}
@@ -143,15 +129,13 @@ export default function GalleryStrip() {
                   sizes="(max-width:640px) 60vw, (max-width:1024px) 22vw, 220px"
                   style={{
                     objectFit: 'cover',
-                    transition: 'transform 600ms cubic-bezier(0.16,1,0.3,1)',
-                    transform: isHov ? 'scale(1.06)' : 'scale(1.0)',
                   }}
                   loading="lazy"
                 />
                 {/* Warm tint on hover */}
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: 'rgba(201,150,62,0.07)',
+                  background: 'rgba(203,152,115,0.07)',
                   opacity: isHov ? 1 : 0,
                   transition: 'opacity 300ms',
                   pointerEvents: 'none',
@@ -163,7 +147,7 @@ export default function GalleryStrip() {
                 fontFamily:    'var(--font-body)',
                 fontSize:      '9.5px',
                 fontWeight:    600,
-                color:         isHov ? 'var(--color-copper)' : 'rgba(58,37,16,0.5)',
+                color:         isHov ? 'var(--color-copper)' : 'rgba(45,28,16,0.5)',
                 letterSpacing: '2px',
                 textTransform: 'uppercase',
                 textAlign:     'center',
@@ -180,7 +164,7 @@ export default function GalleryStrip() {
       </div>
 
       {/* ── CTA ── */}
-      <div className="fade-up" style={{ textAlign: 'center', padding: '0 clamp(24px,5vw,80px)', marginTop: '16px' }}>
+      <div style={{ textAlign: 'center', padding: '0 clamp(24px,5vw,80px)', marginTop: '16px' }}>
         <Link
           href="/gallery"
           className="btn-secondary-dark"

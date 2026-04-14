@@ -31,8 +31,8 @@ export default function GalleryClient() {
               padding: '10px 20px', borderRadius: '2px', cursor: 'pointer',
               transition: 'all 200ms ease', border: '1px solid',
               background: activeCategory === cat ? 'var(--color-gold)' : 'transparent',
-              color: activeCategory === cat ? 'var(--color-navy)' : 'var(--color-navy)',
-              borderColor: activeCategory === cat ? 'var(--color-gold)' : 'rgba(27,31,75,0.2)',
+              color: activeCategory === cat ? 'var(--color-parchment)' : 'var(--color-navy)',
+              borderColor: activeCategory === cat ? 'var(--color-gold)' : 'rgba(18,12,7,0.2)',
             }}
           >
             {cat}
@@ -40,31 +40,57 @@ export default function GalleryClient() {
         ))}
       </div>
 
-      {/* Masonry Grid */}
-      <div className="masonry-grid">
+      {/* Stylish Masonry Grid */}
+      <div className="masonry-grid" style={{ maxWidth: '1400px', margin: '0 auto' }}>
         {filtered.map((img, i) => (
           <div
             key={img.id}
             className="masonry-item"
             onClick={() => setLightboxIndex(i)}
-            style={{ cursor: 'pointer', position: 'relative', overflow: 'hidden', borderRadius: '4px', border: '1px solid rgba(212,160,23,0.15)' }}
+            style={{ 
+              cursor: 'pointer', 
+              position: 'relative', 
+              marginBottom: '24px',
+              borderRadius: '8px',
+              border: '1px solid rgba(203,152,115,0.15)',
+              overflow: 'hidden',
+              background: 'var(--color-linen)',
+              transition: 'transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-8px)'
+              e.currentTarget.style.boxShadow = '0 20px 40px rgba(18,12,7,0.15)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = 'none'
+            }}
           >
-            <div style={{ position: 'relative', paddingBottom: i % 3 === 0 ? '130%' : '75%' }}>
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(max-width:768px) 50vw, (max-width:1024px) 33vw, 25vw"
-                style={{ objectFit: 'cover', transition: 'transform 300ms ease' }}
-                loading="lazy"
-                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.transform = 'scale(1.04)')}
-                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.transform = 'scale(1)')}
-              />
-              <div style={{ position: 'absolute', inset: 0, background: 'rgba(27,31,75,0)', transition: 'background 200ms ease' }}
-                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.background = 'rgba(27,31,75,0.2)')}
-                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.background = 'rgba(27,31,75,0)')}
-              />
-            </div>
+            <Image
+              src={img.src}
+              alt={img.alt}
+              width={800} // Placeholder width
+              height={600} // Placeholder height, will be eclipsed by height: auto
+              sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 33vw"
+              style={{ 
+                width: '100%', 
+                height: 'auto', 
+                display: 'block',
+                transition: 'transform 0.6s ease'
+              }}
+              loading="lazy"
+            />
+            {/* Subtle Overlay on Hover */}
+            <div style={{ 
+              position: 'absolute', 
+              inset: 0, 
+              background: 'rgba(45,28,16,0.05)', 
+              opacity: 0, 
+              transition: 'opacity 0.3s ease',
+              pointerEvents: 'none' 
+            }}
+            className="item-overlay"
+            />
           </div>
         ))}
       </div>

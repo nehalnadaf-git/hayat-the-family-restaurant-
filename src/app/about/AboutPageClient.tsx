@@ -36,13 +36,6 @@ const stats = [
   { num: '100%', label: 'Authentic Recipes' },
 ]
 
-const timeline = [
-  { year: 'Founded', title: 'A Vision Takes Root', desc: 'Hayat Family Restaurant Lazeez Pakwan opened its doors on Shah Bazar Road with a simple promise — royal Mughal flavours served with heartfelt hospitality.' },
-  { year: 'Heritage', title: 'Recipes from the Royal Kitchen', desc: 'Drawing from centuries-old Mughal culinary traditions, our chefs mastered the art of slow-cooked biryanis, tender kababs, and richly spiced curries.' },
-  { year: 'Growth', title: 'A Hubballi Landmark', desc: 'Word spread across Hubballi and beyond. Families, food lovers, and celebrations made Hayat their go-to destination for authentic North Indian cuisine.' },
-  { year: 'Today', title: 'Continuing the Legacy', desc: 'As a cherished destination in Hubballi, Hayat remains committed to excellence, authenticity, and making every meal a royal occasion.' },
-]
-
 
 
 export default function AboutPageClient() {
@@ -69,10 +62,10 @@ export default function AboutPageClient() {
         width: '100%',
         height: 'clamp(250px, 35vw, 600px)',
         overflow: 'hidden',
-        borderBottom: '1px solid rgba(201,150,62,0.2)',
+        borderBottom: '1px solid rgba(203,152,115,0.2)',
       }}>
         <Image
-          src="/images/new-web-banner3.png"
+          src="/images/Full-banner.webp"
           alt="Hayat Family Restaurant — Hubballi"
           fill priority sizes="100vw"
           style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -90,12 +83,12 @@ export default function AboutPageClient() {
       }}>
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'radial-gradient(ellipse at 80% 20%, rgba(201,150,62,0.07) 0%, transparent 50%)',
+          background: 'radial-gradient(ellipse at 80% 20%, rgba(203,152,115,0.07) 0%, transparent 50%)',
           pointerEvents: 'none',
         }} />
         <div style={{
           position: 'absolute', top: 0, left: 0, right: 0, height: '1px',
-          background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.25), transparent)',
+          background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.25), transparent)',
         }} />
         <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div style={{
@@ -139,25 +132,25 @@ export default function AboutPageClient() {
                 aspectRatio: '4/5',
                 borderRadius: '4px',
                 overflow: 'hidden',
-                boxShadow: '0 40px 80px rgba(44,26,14,0.18), 0 12px 32px rgba(44,26,14,0.10)',
-                border: '1px solid rgba(201,150,62,0.2)',
+                boxShadow: '0 40px 80px rgba(18,12,7,0.18), 0 12px 32px rgba(18,12,7,0.10)',
+                border: '1px solid rgba(203,152,115,0.2)',
               }}>
                 <Image
-                  src="/images/restaurant/dining-hall.jpg"
+                  src="/images/restaurant/dining-hall.webp"
                   alt="Hayat Family Restaurant Dining Hall"
                   fill sizes="(max-width:768px) 90vw, 45vw"
                   style={{ objectFit: 'cover' }}
                 />
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: 'linear-gradient(to top, rgba(44,26,14,0.4) 0%, transparent 50%)',
+                  background: 'linear-gradient(to top, rgba(18,12,7,0.4) 0%, transparent 50%)',
                 }} />
                 <div style={{
                   position: 'absolute', bottom: '20px', left: '20px',
                   background: 'rgba(255,255,255,0.08)',
                   backdropFilter: 'blur(20px) saturate(150%)',
                   WebkitBackdropFilter: 'blur(20px) saturate(150%)',
-                  border: '1px solid rgba(201,150,62,0.4)',
+                  border: '1px solid rgba(203,152,115,0.4)',
                   borderRadius: '6px',
                   padding: '10px 18px',
                 }}>
@@ -179,9 +172,9 @@ export default function AboutPageClient() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 100%, rgba(201,150,62,0.08) 0%, transparent 55%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.3), transparent)' }} />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.2), transparent)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 100%, rgba(203,152,115,0.08) 0%, transparent 55%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.3), transparent)' }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.2), transparent)' }} />
 
         <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div className="fade-up" style={{ textAlign: 'center', marginBottom: 'clamp(48px,6vw,80px)' }}>
@@ -204,7 +197,7 @@ export default function AboutPageClient() {
                 <div
                   style={{
                     background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(201,150,62,0.2)',
+                    border: '1px solid rgba(203,152,115,0.2)',
                     borderRadius: '4px',
                     overflow: 'hidden',
                     height: '100%',
@@ -212,19 +205,19 @@ export default function AboutPageClient() {
                   }}
                   onMouseEnter={e => {
                     const el = e.currentTarget as HTMLElement
-                    el.style.borderColor = 'rgba(201,150,62,0.5)'
+                    el.style.borderColor = 'rgba(203,152,115,0.5)'
                     el.style.transform = 'translateY(-6px)'
-                    el.style.boxShadow = '0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,150,62,0.25)'
+                    el.style.boxShadow = '0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(203,152,115,0.25)'
                   }}
                   onMouseLeave={e => {
                     const el = e.currentTarget as HTMLElement
-                    el.style.borderColor = 'rgba(201,150,62,0.2)'
+                    el.style.borderColor = 'rgba(203,152,115,0.2)'
                     el.style.transform = 'translateY(0)'
                     el.style.boxShadow = 'none'
                   }}
                 >
                   {/* Gold top accent line */}
-                  <div style={{ height: '2px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.55), transparent)' }} />
+                  <div style={{ height: '2px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.55), transparent)' }} />
                   {/* Content */}
                   <div style={{ padding: 'clamp(28px,3vw,40px) clamp(24px,2.5vw,32px) clamp(32px,3.5vw,44px)' }}>
                     {/* Number badge */}
@@ -233,7 +226,7 @@ export default function AboutPageClient() {
                       fontSize: '11px',
                       fontWeight: 700,
                       letterSpacing: '3px',
-                      color: 'rgba(201,150,62,0.5)',
+                      color: 'rgba(203,152,115,0.5)',
                       textTransform: 'uppercase',
                       marginBottom: '20px',
                     }}>0{i + 1}</div>
@@ -262,74 +255,6 @@ export default function AboutPageClient() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          TIMELINE
-      ═══════════════════════════════════════════════ */}
-      <section style={{
-        background: 'linear-gradient(165deg, var(--color-linen) 0%, var(--color-parchment-deep) 100%)',
-        padding: 'clamp(72px,10vw,140px) clamp(24px,5vw,80px)',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.25), transparent)' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 20% 80%, rgba(201,150,62,0.05) 0%, transparent 55%)', pointerEvents: 'none' }} />
-
-        <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div className="fade-up" style={{ textAlign: 'center', marginBottom: 'clamp(48px,6vw,80px)' }}>
-            <div className="ornament ornament-dark" style={{ marginBottom: '20px' }}>
-              <span className="eyebrow-dark">Our Journey</span>
-            </div>
-            <h2 className="heading-section" style={{ color: 'var(--color-ink)', maxWidth: '480px', margin: '0 auto' }}>
-              The Story Behind{' '}
-              <em style={{ fontStyle: 'italic', color: 'var(--color-copper)' }}>Every Dish</em>
-            </h2>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(32px,4vw,56px)' }}>
-            {timeline.map((item, i) => (
-              <div key={item.year} className="afu about-timeline-row" style={{
-                display: 'flex',
-                gap: 'clamp(20px,3vw,40px)',
-                alignItems: 'flex-start',
-                flexDirection: i % 2 === 0 ? 'row' : 'row-reverse',
-                transitionDelay: `${i * 90}ms`,
-              }}>
-                {/* Badge */}
-                <div style={{ flexShrink: 0, paddingTop: '6px' }}>
-                  <div style={{
-                    display: 'inline-block',
-                    background: 'linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%)',
-                    borderRadius: '100px',
-                    padding: '8px 20px',
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '10px',
-                    fontWeight: 700,
-                    letterSpacing: '2.5px',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-charcoal)',
-                    whiteSpace: 'nowrap',
-                  }}>{item.year}</div>
-                </div>
-                {/* Card */}
-                <div style={{
-                  flex: 1,
-                  background: 'rgba(255,255,255,0.78)',
-                  backdropFilter: 'blur(8px)',
-                  border: '1px solid rgba(201,150,62,0.2)',
-                  borderRadius: '6px',
-                  padding: 'clamp(22px,3vw,34px)',
-                  boxShadow: '0 4px 24px rgba(44,26,14,0.07)',
-                  maxWidth: '580px',
-                }}>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 'clamp(19px,2.2vw,25px)', fontWeight: 600, color: 'var(--color-ink)', marginBottom: '10px' }}>{item.title}</h3>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(14px,1.4vw,16px)', color: 'var(--color-ink-muted)', lineHeight: 1.8 }}>{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
 
       {/* ═══════════════════════════════════════════════
           VISIT INFO
@@ -340,7 +265,7 @@ export default function AboutPageClient() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.25), transparent)' }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.25), transparent)' }} />
 
         <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div style={{
@@ -367,8 +292,8 @@ export default function AboutPageClient() {
                   <div key={info.label} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
                     <div style={{
                       width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0,
-                      background: 'rgba(201,150,62,0.1)',
-                      border: '1px solid rgba(201,150,62,0.25)',
+                      background: 'rgba(203,152,115,0.1)',
+                      border: '1px solid rgba(203,152,115,0.25)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       color: 'var(--color-copper)',
                     }}>{info.icon}</div>
@@ -392,8 +317,8 @@ export default function AboutPageClient() {
             <div className="fade-up" style={{ transitionDelay: '150ms' }}>
               <div style={{
                 borderRadius: '8px', overflow: 'hidden',
-                border: '1px solid rgba(201,150,62,0.25)',
-                boxShadow: '0 20px 60px rgba(44,26,14,0.12)',
+                border: '1px solid rgba(203,152,115,0.25)',
+                boxShadow: '0 20px 60px rgba(18,12,7,0.12)',
                 position: 'relative', aspectRatio: '4/3',
               }}>
                 <Image
@@ -428,11 +353,11 @@ export default function AboutPageClient() {
         position: 'relative',
         overflow: 'hidden',
       }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 50%, rgba(201,150,62,0.10) 0%, transparent 60%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.35), transparent)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 50%, rgba(203,152,115,0.10) 0%, transparent 60%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.35), transparent)' }} />
 
         <div style={{ maxWidth: '680px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div className="afu">
+          <div className="fade-up">
             <div className="ornament" style={{ marginBottom: '20px' }}>
               <span className="eyebrow">Join Us</span>
             </div>
@@ -460,26 +385,21 @@ export default function AboutPageClient() {
       {/* ── Scoped styles ── */}
       <style>{`
         /* fade-up animation */
-        .afu {
+        .fade-up {
           opacity: 0;
           transform: translateY(28px);
           transition: opacity 0.78s cubic-bezier(0.16,1,0.3,1), transform 0.78s cubic-bezier(0.16,1,0.3,1);
         }
-        .afu.in-view { opacity: 1; transform: translateY(0); }
+        .fade-up.in-view { opacity: 1; transform: translateY(0); }
 
         /* Stats bar — 2×2 on xs */
         @media (max-width: 520px) {
           .about-stats-grid {
             grid-template-columns: repeat(2,1fr) !important;
           }
-          .about-stats-grid > div { border-right: none !important; border-bottom: 1px solid rgba(201,150,62,0.15); }
-          .about-stats-grid > div:nth-child(odd) { border-right: 1px solid rgba(201,150,62,0.15) !important; }
+          .about-stats-grid > div { border-right: none !important; border-bottom: 1px solid rgba(203,152,115,0.15); }
+          .about-stats-grid > div:nth-child(odd) { border-right: 1px solid rgba(203,152,115,0.15) !important; }
           .about-stats-grid > div:nth-last-child(-n+2) { border-bottom: none; }
-        }
-
-        /* Timeline — stack on mobile */
-        @media (max-width: 600px) {
-          .about-timeline-row { flex-direction: column !important; }
         }
 
         /* Gallery — simple 2-col on mobile */

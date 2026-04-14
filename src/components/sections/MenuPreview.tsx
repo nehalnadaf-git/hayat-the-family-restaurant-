@@ -11,21 +11,21 @@ const featured = [
     tagline: 'Slow-cooked biryanis and bold beef preparations',
     items: ['Beef Biryani (Basmati)', 'Beef Barbeque', 'Beef Chilli', 'Beef Kadai', 'Beef Lahori'],
     slug: 'beef-starters',
-    image: '/images/food/beef-barbeque-premium.png',
+    image: '/images/food/beef-barbeque-premium.webp',
   },
   {
     name: 'Tandoori Kababs',
     tagline: 'Char-grilled masterpieces from our clay tandoor',
     items: ['Tandoori Chicken Full', 'Lazeez Kabab', 'Gulzari Kabab', 'Sholay Kabab', 'Murg Hariyali'],
     slug: 'tandoori-kababs',
-    image: '/images/food/tandoori-chicken.png',
+    image: '/images/food/tandoori-chicken.webp',
   },
   {
     name: 'Chicken Starters',
     tagline: 'Sizzling chicken in every style — 20+ varieties',
     items: ['Chicken 65', 'Chicken Barbeque', 'Chicken Dragon', 'Chicken Satay', 'Chicken Lollipop'],
     slug: 'chicken-starters',
-    image: '/images/food/chicken-65-premium.png',
+    image: '/images/food/chicken-65-premium.webp',
   },
 ]
 
@@ -58,9 +58,9 @@ export default function MenuPreview() {
       position: 'relative', overflow: 'hidden',
     }}>
       {/* Subtle warm texture */}
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 80% 50%, rgba(201,150,62,0.07) 0%, transparent 55%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.2), transparent)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(28,16,8,0.08), transparent)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 80% 50%, rgba(203,152,115,0.07) 0%, transparent 55%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.2), transparent)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(18,12,7,0.08), transparent)', pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '1300px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}
@@ -84,9 +84,9 @@ export default function MenuPreview() {
           <div style={{
             background: 'rgba(255,255,255,0.75)',
             borderRadius: '6px', padding: '28px',
-            border: '1px solid rgba(28,16,8,0.1)',
+            border: '1px solid rgba(18,12,7,0.1)',
             backdropFilter: 'blur(12px)',
-            boxShadow: '0 4px 24px rgba(28,16,8,0.06)',
+            boxShadow: '0 4px 24px rgba(18,12,7,0.06)',
           }} className="menu-sidebar">
             <Utensils size={20} color="var(--color-copper)" strokeWidth={1.5} style={{ marginBottom: '14px' }} />
             <h3 style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: '20px', color: 'var(--color-ink)', marginBottom: '16px', fontWeight: 600 }}>
@@ -105,13 +105,13 @@ export default function MenuPreview() {
             </p>
             <div style={{ display: 'flex', gap: '8px' }}>
               <button onClick={() => setSidebarIdx(i => (i - 1 + sidebarItems.length) % sidebarItems.length)}
-                style={{ width: '34px', height: '34px', border: '1px solid rgba(28,16,8,0.15)', borderRadius: '2px', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-copper)', transition: 'all 200ms' }}
+                style={{ width: '34px', height: '34px', border: '1px solid rgba(18,12,7,0.15)', borderRadius: '2px', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-copper)', transition: 'all 200ms' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(181,116,58,0.1)' }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}>
                 <ChevronLeft size={16} />
               </button>
               <button onClick={() => setSidebarIdx(i => (i + 1) % sidebarItems.length)}
-                style={{ width: '34px', height: '34px', border: '1px solid rgba(28,16,8,0.15)', borderRadius: '2px', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-copper)', transition: 'all 200ms' }}
+                style={{ width: '34px', height: '34px', border: '1px solid rgba(18,12,7,0.15)', borderRadius: '2px', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-copper)', transition: 'all 200ms' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(181,116,58,0.1)' }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}>
                 <ChevronRight size={16} />
@@ -126,9 +126,9 @@ export default function MenuPreview() {
                 <div className="menu-card" style={{
                   borderRadius: '6px',
                   overflow: 'hidden',
-                  border: `1px solid ${i === 1 ? 'rgba(201,150,62,0.45)' : 'rgba(28,16,8,0.09)'}`,
+                  border: `1px solid ${i === 1 ? 'rgba(203,152,115,0.45)' : 'rgba(18,12,7,0.09)'}`,
                   background: 'white',
-                  boxShadow: i === 1 ? '0 8px 32px rgba(201,150,62,0.14)' : '0 2px 12px rgba(28,16,8,0.06)',
+                  boxShadow: i === 1 ? '0 8px 32px rgba(203,152,115,0.14)' : '0 2px 12px rgba(18,12,7,0.06)',
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
@@ -157,7 +157,7 @@ export default function MenuPreview() {
                     <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--color-ink-soft)', marginBottom: '16px', lineHeight: 1.55 }}>{cat.tagline}</p>
 
                     {/* Divider */}
-                    <div style={{ height: '1px', background: 'linear-gradient(to right, rgba(201,150,62,0.25), transparent)', marginBottom: '14px' }} />
+                    <div style={{ height: '1px', background: 'linear-gradient(to right, rgba(203,152,115,0.25), transparent)', marginBottom: '14px' }} />
 
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
                       {cat.items.map(item => (
@@ -217,7 +217,7 @@ export default function MenuPreview() {
         @media (max-width: 480px) {
           .menu-cards-grid > a { flex: 0 0 85vw !important; }
         }
-        .menu-card:hover { transform: translateY(-5px) !important; box-shadow: 0 20px 52px rgba(28,16,8,0.13) !important; border-color: rgba(201,150,62,0.4) !important; }
+        .menu-card:hover { transform: translateY(-5px) !important; box-shadow: 0 20px 52px rgba(18,12,7,0.13) !important; border-color: rgba(203,152,115,0.4) !important; }
         .menu-card:hover img { transform: scale(1.04) !important; }
       `}</style>
     </section>

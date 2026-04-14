@@ -41,13 +41,13 @@ export default function SpecialOccasionsSection() {
       overflow: 'hidden',
     }}>
       {/* Decorative gold lines */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.3), transparent)' }} />
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.18), transparent)' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.3), transparent)' }} />
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.18), transparent)' }} />
       {/* Ambient radial top glow */}
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(201,150,62,0.07) 0%, transparent 55%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(203,152,115,0.07) 0%, transparent 55%)', pointerEvents: 'none' }} />
       {/* Side glows */}
-      <div style={{ position: 'absolute', top: '30%', left: '-5%', width: '35%', height: '50%', background: 'radial-gradient(ellipse, rgba(201,150,62,0.03) 0%, transparent 70%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: '30%', right: '-5%', width: '35%', height: '50%', background: 'radial-gradient(ellipse, rgba(201,150,62,0.03) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '30%', left: '-5%', width: '35%', height: '50%', background: 'radial-gradient(ellipse, rgba(203,152,115,0.03) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '30%', right: '-5%', width: '35%', height: '50%', background: 'radial-gradient(ellipse, rgba(203,152,115,0.03) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
         {/* Header */}
@@ -71,7 +71,7 @@ export default function SpecialOccasionsSection() {
             <div key={o.title} className="fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
               <div style={{
                 background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(201,150,62,0.18)',
+                border: '1px solid rgba(203,152,115,0.18)',
                 borderRadius: '4px',
                 padding: '36px 28px',
                 height: '100%',
@@ -80,14 +80,14 @@ export default function SpecialOccasionsSection() {
               }}
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'rgba(201,150,62,0.45)'
-                  el.style.background = 'rgba(201,150,62,0.05)'
+                  el.style.borderColor = 'rgba(203,152,115,0.45)'
+                  el.style.background = 'rgba(203,152,115,0.05)'
                   el.style.boxShadow = '0 20px 60px rgba(0,0,0,0.35)'
                   el.style.transform = 'translateY(-4px)'
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'rgba(201,150,62,0.18)'
+                  el.style.borderColor = 'rgba(203,152,115,0.18)'
                   el.style.background = 'rgba(255,255,255,0.03)'
                   el.style.boxShadow = 'none'
                   el.style.transform = 'translateY(0)'
@@ -96,8 +96,8 @@ export default function SpecialOccasionsSection() {
                 {/* Icon container */}
                 <div style={{
                   width: '52px', height: '52px', borderRadius: '50%',
-                  background: 'rgba(201,150,62,0.1)',
-                  border: '1px solid rgba(201,150,62,0.25)',
+                  background: 'rgba(203,152,115,0.1)',
+                  border: '1px solid rgba(203,152,115,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   marginBottom: '24px',
                 }}>

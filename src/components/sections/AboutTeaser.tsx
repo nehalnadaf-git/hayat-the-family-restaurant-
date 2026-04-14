@@ -18,20 +18,22 @@ export default function AboutTeaser() {
   }, [])
 
   return (
-    <section style={{
-      background: 'linear-gradient(160deg, #3D2A18 0%, #472E1A 55%, #3D2A18 100%)',
-      padding: 'clamp(80px, 10vw, 140px) clamp(24px, 5vw, 80px)',
-      position: 'relative',
-      overflow: 'hidden',
-    }}>
+    <section 
+      id="about-teaser"
+      style={{
+        background: 'linear-gradient(160deg, #1C120A 0%, #241508 55%, #1C120A 100%)',
+        padding: 'clamp(80px, 10vw, 140px) clamp(24px, 5vw, 80px)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
       {/* Ambient glows */}
-      <div style={{ position: 'absolute', top: '-15%', right: '-8%', width: '55%', height: '75%', background: 'radial-gradient(ellipse at center, rgba(201,150,62,0.06) 0%, transparent 65%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: '40%', height: '60%', background: 'radial-gradient(ellipse at center, rgba(201,150,62,0.03) 0%, transparent 65%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.25), transparent)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '-15%', right: '-8%', width: '55%', height: '75%', background: 'radial-gradient(ellipse at center, rgba(203,152,115,0.06) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: '40%', height: '60%', background: 'radial-gradient(ellipse at center, rgba(203,152,115,0.03) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.25), transparent)', pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Eyebrow */}
-        <div ref={leftRef} className="fade-up" style={{ marginBottom: '64px' }}>
+        <div ref={leftRef} className="fade-up about-header-region" style={{ marginBottom: '64px' }}>
           <div className="ornament" style={{ justifyContent: 'flex-start', marginBottom: '20px' }}>
             <span className="eyebrow">Our Story</span>
           </div>
@@ -75,24 +77,24 @@ export default function AboutTeaser() {
               aspectRatio: '4/5',
               borderRadius: '4px',
               overflow: 'hidden',
-              boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,150,62,0.2)',
+              boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(203,152,115,0.2)',
             }}>
               <Image
-                src="/images/restaurant/entrance.png"
+                src="/images/restaurant/entrance.webp"
                 alt="Hayat Family Restaurant Front — Hubballi"
                 fill
                 sizes="(max-width: 768px) 90vw, 45vw"
                 style={{ objectFit: 'cover' }}
               />
               {/* Warm tint overlay */}
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(201,150,62,0.06) 0%, transparent 40%, transparent 60%, rgba(201,150,62,0.04) 100%)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(203,152,115,0.06) 0%, transparent 40%, transparent 60%, rgba(203,152,115,0.04) 100%)', pointerEvents: 'none' }} />
               {/* Serving tag — glassmorphism */}
               <div style={{
                 position: 'absolute', bottom: '20px', left: '20px',
                 background: 'rgba(255,255,255,0.07)',
                 backdropFilter: 'blur(24px) saturate(160%)',
                 WebkitBackdropFilter: 'blur(24px) saturate(160%)',
-                border: '1px solid rgba(201,150,62,0.45)',
+                border: '1px solid rgba(203,152,115,0.45)',
                 borderRadius: '8px',
                 padding: '14px 22px',
                 boxShadow: '0 8px 32px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.08) inset',
@@ -109,6 +111,8 @@ export default function AboutTeaser() {
       </div>
       <style>{`
         @media (max-width: 640px) {
+          #about-teaser { padding: 48px 24px !important; }
+          .about-header-region { margin-bottom: 24px !important; }
           .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .about-photo { aspect-ratio: 3/2 !important; }
           .about-eyebrow-row { margin-bottom: 32px !important; }

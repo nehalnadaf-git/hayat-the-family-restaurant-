@@ -41,7 +41,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <span className="tag-pill" style={{ color: 'rgba(44,26,14,0.6)', borderColor: 'rgba(44,26,14,0.2)', background: 'transparent', marginBottom: '20px', display: 'inline-flex' }}>
+          <span className="tag-pill" style={{ color: 'rgba(18,12,7,0.6)', borderColor: 'rgba(18,12,7,0.2)', background: 'transparent', marginBottom: '20px', display: 'inline-flex' }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#D4A853', flexShrink: 0 }} />
             Authentic Mughal &amp; Tandoor — <strong style={{ color: 'var(--color-navy)' }}>Lazeez Pakwan</strong>
           </span>
@@ -98,7 +98,7 @@ export default function HeroSection() {
           {/* Desktop Banner */}
           <div className="hero-banner-desktop" style={{ position: 'relative', width: '100%', height: '100%' }}>
             <Image
-              src="/images/restaurant/inside-empty2.png"
+              src="/images/restaurant/inside-empty2.webp"
               alt="Hayat Family Restaurant Lazeez Pakwan — Hubballi"
               fill
               priority
@@ -110,7 +110,7 @@ export default function HeroSection() {
           {/* Mobile Banner */}
           <div className="hero-banner-mobile" style={{ position: 'relative', width: '100%', height: '100%', minHeight: '300px', display: 'none' }}>
             <Image
-              src="/images/restaurant/inside-empty2.png"
+              src="/images/restaurant/inside-empty2.webp"
               alt="Hayat Family Restaurant — Mobile View"
               fill
               priority
@@ -124,7 +124,7 @@ export default function HeroSection() {
             position: 'absolute',
             inset: 0,
             zIndex: 1,
-            background: 'linear-gradient(to bottom, rgba(250,246,240,0.15) 0%, transparent 30%, rgba(44,26,14,0.15) 100%)'
+            background: 'linear-gradient(to bottom, rgba(250,246,240,0.15) 0%, transparent 30%, rgba(18,12,7,0.15) 100%)'
           }} />
         </motion.div>
       </div>

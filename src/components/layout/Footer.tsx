@@ -1,111 +1,144 @@
 'use client'
 import Link from 'next/link'
-import { MapPin, Phone, Clock, ExternalLink } from 'lucide-react'
+import { MapPin, Phone, Clock, Navigation } from 'lucide-react'
 import { restaurant } from '@/data/restaurant'
 
 const quickLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About Us', href: '/about' },
-  { label: 'Our Menu', href: '/menu' },
-  { label: 'Gallery', href: '/gallery' },
-  { label: 'Reviews', href: '/reviews' },
-  { label: 'FAQ', href: '/faq' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home',        href: '/' },
+  { label: 'About Us',    href: '/about' },
+  { label: 'Our Menu',    href: '/menu' },
+  { label: 'Gallery',     href: '/gallery' },
+  { label: 'Reviews',     href: '/reviews' },
+  { label: 'FAQ',         href: '/faq' },
+  { label: 'Contact',     href: '/contact' },
 ]
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--color-charcoal)', color: 'var(--color-ivory)', position: 'relative' }}>
-      {/* Gold top border */}
-      <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(212,168,83,0.5), transparent)' }} />
+    <footer style={{ background: 'var(--color-charcoal)', color: 'var(--color-ivory)', position: 'relative', overflow: 'hidden' }}>
+
+      {/* Top signature-sand border */}
+      <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.6), transparent)' }} />
 
       {/* Ambient glow */}
-      <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '60%', height: '40%', background: 'radial-gradient(ellipse at top, rgba(212,168,83,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '70%', height: '60%', background: 'radial-gradient(ellipse at top, rgba(203,152,115,0.05) 0%, transparent 65%)', pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '80px 32px 44px', position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '56px', marginBottom: '64px' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '88px 48px 52px', position: 'relative', zIndex: 1 }}>
 
-          {/* Brand column */}
+        {/* ── 2-column layout ── */}
+        <div className="footer-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: '1.6fr 1fr',
+          gap: '80px',
+          alignItems: 'start',
+          marginBottom: '72px',
+        }}>
+
+          {/* ── Col 1: Brand ── */}
           <div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: '48px', fontWeight: 700, color: 'var(--color-gold)', lineHeight: 1, letterSpacing: '3px', marginBottom: '4px' }}>
+            {/* Logo wordmark */}
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: '56px', fontWeight: 700, color: 'var(--color-gold)', lineHeight: 1, letterSpacing: '4px', marginBottom: '4px' }}>
               HAYAT
             </div>
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'rgba(250,246,240,0.4)', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '8px' }}>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'rgba(250,246,240,0.35)', letterSpacing: '5px', textTransform: 'uppercase', marginBottom: '6px' }}>
               Family Restaurant
             </div>
-            <div style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: '14px', color: 'var(--color-teak)', marginBottom: '20px', letterSpacing: '0.5px' }}>
+            <div style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: '15px', color: 'var(--color-gold)', opacity: 0.65, marginBottom: '28px', letterSpacing: '0.5px' }}>
               Lazeez Pakwan
             </div>
 
             {/* Gold rule */}
-            <div style={{ width: '40px', height: '1px', background: 'var(--color-gold)', marginBottom: '20px', opacity: 0.6 }} />
+            <div style={{ width: '52px', height: '1px', background: 'var(--color-gold)', opacity: 0.45, marginBottom: '26px' }} />
 
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--color-ivory-muted)', lineHeight: 1.8, marginBottom: '28px', maxWidth: '280px' }}>
-              {restaurant.tagline} — Authentic Mughal, North Indian &amp; Tandoor cuisine in the heart of Hubballi.
+            {/* Tagline */}
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--color-ivory-muted)', lineHeight: 1.9, marginBottom: '36px', maxWidth: '460px' }}>
+              {restaurant.tagline} — Authentic Mughal, North Indian &amp; Tandoor cuisine, served with royal warmth in the heart of Hubballi.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <MapPin size={15} style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '2px' }} />
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--color-ivory-muted)', lineHeight: 1.65 }}>
+            {/* Contact details */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', marginBottom: '36px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
+                <MapPin size={15} style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '3px', opacity: 0.85 }} />
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--color-ivory-muted)', lineHeight: 1.7 }}>
                   {restaurant.addressFull}
                 </span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <Phone size={15} style={{ color: 'var(--color-gold)', flexShrink: 0 }} />
-                <a href={restaurant.phoneHref} style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--color-gold)', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.5px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <Phone size={15} style={{ color: 'var(--color-gold)', flexShrink: 0, opacity: 0.85 }} />
+                <a href={restaurant.phoneHref}
+                  style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--color-gold)', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.5px', transition: 'opacity 200ms' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.7' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1' }}
+                >
                   {restaurant.phone}
                 </a>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <Clock size={15} style={{ color: 'var(--color-gold)', flexShrink: 0 }} />
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--color-ivory-muted)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <Clock size={15} style={{ color: 'var(--color-gold)', flexShrink: 0, opacity: 0.85 }} />
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--color-ivory-muted)' }}>
                   {restaurant.hours}
                 </span>
               </div>
             </div>
 
-            {/* Social icons */}
-            <div style={{ display: 'flex', gap: '12px', marginTop: '28px' }}>
-              <a href={restaurant.googleMapsUrl} target="_blank" rel="noopener noreferrer" aria-label="Google Maps"
-                style={{ width: '38px', height: '38px', borderRadius: '50%', border: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-ivory-muted)', transition: 'all 250ms', textDecoration: 'none' }}
-                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = 'var(--color-gold)'; el.style.color = 'var(--color-gold)'; el.style.background = 'rgba(212,168,83,0.08)' }}
-                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = 'var(--color-border)'; el.style.color = 'var(--color-ivory-muted)'; el.style.background = 'transparent' }}
-              >
-                <ExternalLink size={15} />
-              </a>
-            </div>
+            {/* Get Directions CTA */}
+            <a href={restaurant.googleMapsUrl} target="_blank" rel="noopener noreferrer"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 22px', border: '1px solid rgba(203,152,115,0.38)', borderRadius: '2px', fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--color-gold)', textDecoration: 'none', transition: 'all 250ms ease' }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(203,152,115,0.10)'; el.style.borderColor = 'rgba(203,152,115,0.7)' }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.borderColor = 'rgba(203,152,115,0.38)' }}
+            >
+              <Navigation size={13} /> Get Directions
+            </a>
           </div>
 
-          {/* Quick Links */}
+          {/* ── Col 2: Quick Links ── */}
           <div>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '22px', color: 'var(--color-ivory)', marginBottom: '8px', fontWeight: 600, letterSpacing: '0.5px' }}>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '22px', fontWeight: 600, color: 'var(--color-ivory)', marginBottom: '10px', letterSpacing: '0.5px' }}>
               Quick Links
             </h3>
-            <div style={{ width: '32px', height: '1px', background: 'var(--color-gold)', marginBottom: '24px', opacity: 0.6 }} />
-            <nav style={{ display: 'flex', flexDirection: 'column', gap: '13px' }}>
+            <div style={{ width: '36px', height: '1px', background: 'var(--color-gold)', opacity: 0.5, marginBottom: '28px' }} />
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {quickLinks.map(l => (
-                <Link key={l.href} href={l.href} style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--color-ivory-muted)', textDecoration: 'none', transition: 'color 200ms', display: 'flex', alignItems: 'center', gap: '8px' }}
-                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-gold)')}
-                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-ivory-muted)')}
+                <Link key={l.href} href={l.href}
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '15px',
+                    color: 'var(--color-ivory-muted)',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    transition: 'color 200ms, gap 200ms',
+                  }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.color = 'var(--color-gold)'; el.style.gap = '16px' }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.color = 'var(--color-ivory-muted)'; el.style.gap = '12px' }}
                 >
-                  <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'rgba(212,168,83,0.5)', flexShrink: 0 }} />
+                  <span style={{ width: '5px', height: '1px', background: 'rgba(203,152,115,0.55)', display: 'block', flexShrink: 0, transition: 'width 200ms' }} />
                   {l.label}
                 </Link>
               ))}
             </nav>
           </div>
 
-
         </div>
 
-        {/* Bottom bar */}
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '28px', display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'rgba(200,184,154,0.4)', letterSpacing: '0.3px' }}>
+        {/* ── Bottom bar ── */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '28px', display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'space-between', alignItems: 'center' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'rgba(203,152,115,0.35)', letterSpacing: '0.3px' }}>
             © 2026 Hayat Family Restaurant Lazeez Pakwan, Hubballi. All rights reserved.
+          </p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'rgba(250,246,240,0.18)', letterSpacing: '0.3px' }}>
+            Shah Bazar Road, Behind Jamiya Masjid, Hubballi — 580028
           </p>
         </div>
       </div>
+
+      {/* Responsive */}
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+        }
+      `}</style>
     </footer>
   )
 }

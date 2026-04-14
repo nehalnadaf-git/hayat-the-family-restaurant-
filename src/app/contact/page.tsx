@@ -94,7 +94,7 @@ export default function ContactPage() {
                 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                   <tbody>
                     {hours.map(h => (
-                      <tr key={h.day} style={{ borderBottom: '1px solid rgba(44,26,14,0.08)' }}>
+                      <tr key={h.day} style={{ borderBottom: '1px solid rgba(18,12,7,0.08)' }}>
                         <td style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: '#555', padding: '8px 0', paddingRight: '16px' }}>{h.day}</td>
                         <td style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--color-navy)', fontWeight: 500, padding: '8px 0', textAlign: 'right' }}>{h.time}</td>
                       </tr>
@@ -120,7 +120,7 @@ export default function ContactPage() {
             <h2 className="heading-section" style={{ color: 'var(--color-navy)', marginBottom: '24px', fontSize: 'clamp(28px,4vw,40px)' }}>
               Our Location
             </h2>
-            <div style={{ borderRadius: '4px', overflow: 'hidden', border: '2px solid rgba(212,168,83,0.3)', boxShadow: '0 8px 40px rgba(44,26,14,0.1)' }}>
+            <div style={{ borderRadius: '4px', overflow: 'hidden', border: '2px solid rgba(212,168,83,0.3)', boxShadow: '0 8px 40px rgba(18,12,7,0.1)' }}>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3847.462!2d75.1183!3d15.3647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb8d4b03fa04adf%3A0x6c6f57d5f7d57b2e!2sShah%20Bazar%20Road%20Hubballi!5e0!3m2!1sen!2sin!4v1712345678901"
                 width="100%"

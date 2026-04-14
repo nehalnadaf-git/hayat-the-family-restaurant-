@@ -17,16 +17,16 @@ export default function SignatureHighlight() {
 
   return (
     <section ref={sectionRef} style={{
-      background: 'linear-gradient(160deg, #3D2A18 0%, #472E1A 50%, #3D2A18 100%)',
+      background: 'linear-gradient(160deg, #1C120A 0%, #241508 50%, #1C120A 100%)',
       padding: 'clamp(80px, 10vw, 140px) clamp(24px, 5vw, 80px)',
       position: 'relative',
       overflow: 'hidden',
     }}>
       {/* Multi-point ambient glow */}
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 50% 120%, rgba(201,150,62,0.09) 0%, transparent 50%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 20% 40%, rgba(201,150,62,0.04) 0%, transparent 45%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.25), transparent)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.15), transparent)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 50% 120%, rgba(203,152,115,0.09) 0%, transparent 50%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 20% 40%, rgba(203,152,115,0.04) 0%, transparent 45%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.25), transparent)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.15), transparent)', pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}
@@ -46,7 +46,7 @@ export default function SignatureHighlight() {
             <div key={dish.name} className="sig-card-item fade-up" style={{ transitionDelay: `${i * 90}ms` }}>
               <div style={{
                 background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(201,150,62,0.2)',
+                border: '1px solid rgba(203,152,115,0.2)',
                 borderRadius: '4px',
                 overflow: 'hidden',
                 height: '100%',
@@ -54,13 +54,13 @@ export default function SignatureHighlight() {
               }}
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'rgba(201,150,62,0.5)'
+                  el.style.borderColor = 'rgba(203,152,115,0.5)'
                   el.style.transform = 'translateY(-6px)'
-                  el.style.boxShadow = '0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,150,62,0.25)'
+                  el.style.boxShadow = '0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(203,152,115,0.25)'
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget as HTMLElement
-                  el.style.borderColor = 'rgba(201,150,62,0.2)'
+                  el.style.borderColor = 'rgba(203,152,115,0.2)'
                   el.style.transform = 'translateY(0)'
                   el.style.boxShadow = 'none'
                 }}
