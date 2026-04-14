@@ -1,5 +1,6 @@
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
+import InstallBanner from '@/components/pwa/InstallBanner'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -24,11 +25,25 @@ const dmSans = DM_Sans({
   display: 'swap',
 })
 
+export const viewport: Viewport = {
+  themeColor: '#1a0800',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://hayatfamilyrestaurant.in'),
+  applicationName: 'Hayat Family Restaurant',
   title: { default: 'Hayat Family Restaurant Hubballi | Authentic Mughal & Tandoor Cuisine', template: '%s | Hayat Family Restaurant Hubballi' },
   description: 'Hayat Family Restaurant Lazeez Pakwan in Hubballi serves authentic Mughal, North Indian & Tandoor cuisine — Beef Biryani, Tandoori Chicken, Kababs, Beef Gravies & more. Open daily 11 AM–11 PM, Shah Bazar Road.',
   keywords: ['Hayat Family Restaurant', 'Hubballi restaurant', 'best biryani Hubballi', 'Mughal cuisine Hubli', 'beef biryani Hubballi', 'tandoori chicken Hubballi', 'halal restaurant Hubballi', 'Lazeez Pakwan', 'Shah Bazar Road restaurant'],
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Hayat',
+  },
+  formatDetection: { telephone: false },
   openGraph: {
     siteName: 'Hayat Family Restaurant',
     locale: 'en_IN',
@@ -74,7 +89,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://maps.googleapis.com" />
-        <link rel="icon" href="/favicon.png" sizes="any" />
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
@@ -86,6 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             <main>{children}</main>
             <Footer />
+            <InstallBanner />
             <BookingModal />
             <BulkOrderModal />
           </BookingModalProvider>
