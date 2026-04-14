@@ -2,13 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import { galleryItems } from '@/data/gallery'
-import type { SlideImage } from 'yet-another-react-lightbox'
-
-const Lightbox = dynamic(() => import('yet-another-react-lightbox'), { ssr: false })
-
-const slides: SlideImage[] = galleryItems.map(item => ({ src: item.src, alt: item.alt }))
 
 /* Subtle, tasteful tilts — feel like resting prints, not a messy pile */
 const ROTATIONS = [-2.5, 1, -1.5, 2, -1, 1.5, -2, 1, -1.5, 2]
@@ -16,28 +10,13 @@ const ROTATIONS = [-2.5, 1, -1.5, 2, -1, 1.5, -2, 1, -1.5, 2]
 export default function GalleryStrip() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const stripRef   = useRef<HTMLDivElement>(null)
-  const [lightboxIndex, setLightboxIndex] = useState(-1)
-  const [hoveredIdx,    setHoveredIdx]    = useState<number | null>(null)
-  const touchTrack  = useRef<{ idx: number; x: number; y: number } | null>(null)
-  const savedScroll = useRef(0)
-
-  const openLightbox = (index: number) => {
-    savedScroll.current = window.scrollY
-    setLightboxIndex(index)
-  }
-
-  const closeLightbox = () => {
-    setLightboxIndex(-1)
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: savedScroll.current, behavior: 'instant' })
-    })
-  }
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null)
 
   /* Fade-in observer */
   useEffect(() => {
     const io = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view') }),
-      { threshold: 0.06 }
+      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
     )
     sectionRef.current?.querySelectorAll('.fade-up').forEach(el => io.observe(el))
     return () => io.disconnect()
@@ -70,7 +49,8 @@ export default function GalleryStrip() {
         background: 'linear-gradient(165deg, #FDF8F2 0%, #F8F0E4 55%, #F4EAD5 100%)',
         padding: 'clamp(80px,10vw,140px) 0',
         position: 'relative',
-        overflow: 'hidden',
+        overflowX: 'hidden',
+        overflowY: 'visible',
       }}
     >
       {/* Gold top / bottom lines */}
@@ -92,9 +72,10 @@ export default function GalleryStrip() {
       </div>
 
       {/* ── Photo strip ── */}
+      <div className="fade-up">
       <div
         ref={stripRef}
-        className="fade-up gallery-strip-scroll"
+        className="gallery-strip-scroll"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -104,11 +85,13 @@ export default function GalleryStrip() {
           paddingTop:   '28px',
           paddingBottom:'48px',
           overflowX: 'auto',
-          scrollSnapType: 'x mandatory',
+          scrollSnapType: 'x proximity',
           WebkitOverflowScrolling: 'touch',
           scrollbarWidth: 'none',
           cursor: 'grab',
           userSelect: 'none',
+          touchAction: 'pan-x',
+          overscrollBehaviorX: 'contain',
           width: '100%',
           boxSizing: 'border-box',
         }}
@@ -121,31 +104,8 @@ export default function GalleryStrip() {
             <div
               key={item.id}
               className="gallery-photo-frame"
-              onClick={(e) => {
-                e.stopPropagation()
-                if ((e.nativeEvent as PointerEvent).pointerType === 'touch') return
-                openLightbox(i)
-              }}
               onMouseEnter={() => setHoveredIdx(i)}
               onMouseLeave={() => setHoveredIdx(null)}
-              onTouchStart={(e) => {
-                e.stopPropagation()
-                const t = e.touches[0]
-                touchTrack.current = { idx: i, x: t.clientX, y: t.clientY }
-                setHoveredIdx(i)
-              }}
-              onTouchEnd={(e) => {
-                e.stopPropagation()
-                e.preventDefault()
-                const track = touchTrack.current
-                touchTrack.current = null
-                setTimeout(() => setHoveredIdx(null), 600)
-                if (!track || track.idx !== i) return
-                const t = e.changedTouches[0]
-                if (Math.abs(t.clientX - track.x) < 10 && Math.abs(t.clientY - track.y) < 10) {
-                  openLightbox(i)
-                }
-              }}
               style={{
                 flexShrink: 0,
                 scrollSnapAlign: 'center',
@@ -160,12 +120,12 @@ export default function GalleryStrip() {
                   ? 'rotate(0deg) translateY(-12px) scale(1.05)'
                   : `rotate(${rot}deg)`,
                 transition: 'transform 400ms cubic-bezier(0.16,1,0.3,1), box-shadow 360ms ease, border-color 260ms',
-                /* Professional shadow — single soft directional layer */
+                /* Professional shadow */
                 boxShadow: isHov
                   ? '0 20px 48px rgba(28,16,8,0.20), 0 8px 20px rgba(28,16,8,0.10), 0 0 0 1.5px rgba(201,150,62,0.30)'
                   : '0 8px 24px rgba(28,16,8,0.12), 0 2px 6px rgba(28,16,8,0.07)',
                 zIndex: isHov ? 10 : 1,
-                cursor: 'pointer',
+                cursor: 'default',
               }}
             >
               {/* Photo print area */}
@@ -217,36 +177,18 @@ export default function GalleryStrip() {
           )
         })}
       </div>
-
-      {/* ── CTA ── */}
-      <div className="fade-up" style={{ textAlign: 'center', padding: '0 clamp(24px,5vw,80px)', marginTop: '12px' }}>
-        <Link href="/gallery" style={{
-          fontFamily:     'var(--font-body)',
-          fontSize:       '12px',
-          fontWeight:     600,
-          color:          'var(--color-copper)',
-          textDecoration: 'none',
-          letterSpacing:  '2.5px',
-          textTransform:  'uppercase',
-          borderBottom:   '1px solid rgba(181,116,58,0.35)',
-          paddingBottom:  '3px',
-          display:        'inline-block',
-          transition:     'border-color 200ms',
-        }}
-          onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--color-copper)')}
-          onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(181,116,58,0.35)')}
-        >
-          View Full Gallery — {galleryItems.length} Photos →
-        </Link>
       </div>
 
-      {/* Lightbox — always mounted to avoid scroll-jump on mount */}
-      <Lightbox
-        open={lightboxIndex >= 0}
-        close={closeLightbox}
-        index={lightboxIndex >= 0 ? lightboxIndex : 0}
-        slides={slides}
-      />
+      {/* ── CTA ── */}
+      <div className="fade-up" style={{ textAlign: 'center', padding: '0 clamp(24px,5vw,80px)', marginTop: '16px' }}>
+        <Link
+          href="/gallery"
+          className="btn-secondary-dark"
+          style={{ display: 'inline-block' }}
+        >
+          View Full Gallery
+        </Link>
+      </div>
 
       <style>{`
         .gallery-strip-scroll::-webkit-scrollbar { display: none; }

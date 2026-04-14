@@ -109,19 +109,19 @@ export default function BookingModal() {
     })
     const timeLabel = TIME_SLOTS.find(t => t.value === form.time)?.label ?? form.time
     const msg = [
-      'Hello Hayat Family Restaurant! 🍽️',
+      'I would like to reserve a table at Hayat Family Restaurant. Please find my details below:',
       '',
-      "I'd like to reserve a table:",
+      `Name           : ${form.name.trim()}`,
+      `Phone          : ${form.phone.trim()}`,
+      `Date           : ${dateStr}`,
+      `Time           : ${timeLabel}`,
+      `Party Size     : ${form.guests} guest${form.guests === '1' ? '' : 's'}`,
+      form.notes.trim() ? `Special Request: ${form.notes.trim()}` : '',
       '',
-      `👤 Name: ${form.name.trim()}`,
-      `📱 Phone: ${form.phone.trim()}`,
-      `📅 Date: ${dateStr}`,
-      `⏰ Time: ${timeLabel}`,
-      `👥 Party Size: ${form.guests} guest${form.guests === '1' ? '' : 's'}`,
-      form.notes.trim() ? `📝 Notes: ${form.notes.trim()}` : '',
+      'Kindly confirm my reservation at your earliest convenience.',
       '',
-      'Kindly confirm my reservation. Thank you!',
-    ].filter(l => l !== undefined && !(l === '' && false)).join('\n')
+      'Thank you.',
+    ].filter(l => l !== undefined).join('\n')
     window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, '_blank')
     closeModal()
     setForm({ name: '', phone: '', date: '', time: '', guests: '2', notes: '' })
@@ -174,7 +174,7 @@ export default function BookingModal() {
 
         {/* ── Dark header ── */}
         <div style={{
-          background: 'linear-gradient(135deg, #2A1A0E 0%, #3C2512 100%)',
+          background: 'linear-gradient(135deg, #3D2A18 0%, #52351E 100%)',
           padding: '28px 24px 24px',
           flexShrink: 0,
           position: 'relative',

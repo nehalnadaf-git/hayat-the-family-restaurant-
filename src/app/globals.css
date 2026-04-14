@@ -2,11 +2,11 @@
 
 @theme {
   /* === DARK SECTION PALETTE === */
-  --color-navy:           #2A1A0E;
-  --color-navy-mid:       #321F10;
-  --color-navy-light:     #3C2512;
-  --color-charcoal:       #1E1109;
-  --color-charcoal-mid:   #261509;
+  --color-navy:           #3D2A18;
+  --color-navy-mid:       #472E1A;
+  --color-navy-light:     #52351E;
+  --color-charcoal:       #2E1C0F;
+  --color-charcoal-mid:   #38210F;
 
   /* === LIGHT SECTION PALETTE === */
   --color-parchment:      #FAF4E8;
@@ -27,8 +27,8 @@
   --color-ivory:          #FAF6F0;
   --color-ivory-2:        #F0E6D3;
   --color-ivory-muted:    #C8B89A;
-  --color-ink:            #2A1A0E;
-  --color-ink-mid:        #3A2510;
+  --color-ink:            #3D2A18;
+  --color-ink-mid:        #4A3018;
   --color-ink-muted:      #6B4D30;
   --color-ink-soft:       #8C6840;
 
@@ -174,7 +174,7 @@ body {
 .drawer-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(34,21,9,0.88);
+  background: rgba(50,32,16,0.88);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   z-index: 150;
@@ -450,7 +450,7 @@ body {
   top: calc(100% + 12px);
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(26,15,7,0.98);
+  background: rgba(42,28,14,0.98);
   border: 1px solid var(--color-border);
   border-radius: 4px;
   padding: 8px 0;
@@ -629,11 +629,11 @@ body {
 .category-card .card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(30,17,9,0.92) 0%, rgba(30,17,9,0.4) 60%, transparent 100%);
+  background: linear-gradient(to top, rgba(48,28,14,0.88) 0%, rgba(48,28,14,0.38) 60%, transparent 100%);
   transition: background 300ms ease;
 }
 .category-card:hover .card-overlay {
-  background: linear-gradient(to top, rgba(30,17,9,0.96) 0%, rgba(30,17,9,0.6) 60%, rgba(201,150,62,0.08) 100%);
+  background: linear-gradient(to top, rgba(48,28,14,0.94) 0%, rgba(48,28,14,0.56) 60%, rgba(201,150,62,0.08) 100%);
 }
 
 /* ===== LUXURY SECTION DIVIDER ===== */

@@ -96,34 +96,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Map */}
-          <div>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '22px', color: 'var(--color-ivory)', marginBottom: '8px', fontWeight: 600, letterSpacing: '0.5px' }}>
-              Find Us
-            </h3>
-            <div style={{ width: '32px', height: '1px', background: 'var(--color-gold)', marginBottom: '24px', opacity: 0.6 }} />
-            <div style={{ borderRadius: '4px', overflow: 'hidden', border: '1px solid var(--color-border)', marginBottom: '16px', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3847.462!2d75.1183!3d15.3647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb8d4b03fa04adf%3A0x6c6f57d5f7d57b2e!2sShah%20Bazar%20Road%20Hubballi!5e0!3m2!1sen!2sin!4v1712345678901"
-                width="100%"
-                height="200"
-                style={{ border: 0, display: 'block', filter: 'grayscale(20%) contrast(1.1)' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Hayat Family Restaurant Location"
-              />
-            </div>
-            <a
-              href={restaurant.googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary"
-              style={{ fontSize: '11px', padding: '10px 20px', letterSpacing: '1.5px' }}
-            >
-              <MapPin size={14} /> Get Directions
-            </a>
-          </div>
+
         </div>
 
         {/* Bottom bar */}

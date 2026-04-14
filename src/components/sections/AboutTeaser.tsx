@@ -10,7 +10,7 @@ export default function AboutTeaser() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view') } }),
-      { threshold: 0.12 }
+      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
     )
     if (leftRef.current) observer.observe(leftRef.current)
     if (rightRef.current) observer.observe(rightRef.current)
@@ -19,7 +19,7 @@ export default function AboutTeaser() {
 
   return (
     <section style={{
-      background: 'linear-gradient(160deg, #2A1A0E 0%, #321F10 55%, #2E1A0C 100%)',
+      background: 'linear-gradient(160deg, #3D2A18 0%, #472E1A 55%, #3D2A18 100%)',
       padding: 'clamp(80px, 10vw, 140px) clamp(24px, 5vw, 80px)',
       position: 'relative',
       overflow: 'hidden',

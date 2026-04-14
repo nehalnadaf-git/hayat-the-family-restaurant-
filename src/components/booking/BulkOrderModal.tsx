@@ -284,19 +284,17 @@ export default function BulkOrderModal() {
       weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
     })
     const lines = [
-      'Hello Hayat Family Restaurant! 🍽️',
+      'I would like to place a bulk catering order with Hayat Family Restaurant. Please find the details below:',
       '',
-      "I'd like to place a bulk catering order:",
+      `Name           : ${form.name.trim()}`,
+      `Phone          : ${form.phone.trim()}`,
+      `Event Date     : ${dateStr}`,
+      `Guests         : ${form.guests}`,
+      `Delivery       : ${form.delivery === 'doorstep' ? 'Doorstep Delivery' : 'At Restaurant / Self Pickup'}`,
+      form.delivery === 'doorstep' && form.address.trim() ? `Address        : ${form.address.trim()}` : '',
       '',
-      `👤 Name: ${form.name.trim()}`,
-      `📱 Phone: ${form.phone.trim()}`,
-      `📅 Event Date: ${dateStr}`,
-      `👥 Guests: ${form.guests}`,
-      `🚚 Delivery: ${form.delivery === 'doorstep' ? 'Doorstep Delivery' : 'At Restaurant / Self Pickup'}`,
-      form.delivery === 'doorstep' && form.address.trim() ? `📍 Address: ${form.address.trim()}` : '',
-      '',
-      '📦 Menu Order:',
-      '─────────────────────────',
+      'Menu Order',
+      '──────────────────────────────',
     ]
     for (const cat of bulkMenu) {
       const catIdx = bulkMenu.indexOf(cat)
@@ -306,16 +304,16 @@ export default function BulkOrderModal() {
       for (const item of items) {
         const q = qty(catIdx, item.name)
         const total = q * item.price
-        lines.push(`• ${item.name}: ${q} kg × ₹${item.price.toLocaleString('en-IN')}/kg = ${fmt(total)}`)
+        lines.push(`  ${item.name}: ${q} kg x Rs.${item.price.toLocaleString('en-IN')}/kg = ${fmt(total)}`)
       }
     }
-    lines.push('─────────────────────────')
-    if (grandTotal > 0) lines.push(`💰 Estimated Total: ${fmt(grandTotal)}`)
-    if (!selectedItems.length) lines.push('(No items pre-selected — please discuss menu)')
-    if (form.notes.trim()) lines.push('', `📝 Notes: ${form.notes.trim()}`)
-    lines.push('', 'Kindly confirm and provide a final quotation. Thank you!')
+    lines.push('──────────────────────────────')
+    if (grandTotal > 0) lines.push(`Estimated Total: ${fmt(grandTotal)}`)
+    if (!selectedItems.length) lines.push('(No items pre-selected — please discuss the menu with us)')
+    if (form.notes.trim()) lines.push('', `Special Instructions: ${form.notes.trim()}`)
+    lines.push('', 'Kindly confirm this order and share the final quotation at your earliest convenience.', '', 'Thank you.')
 
-    const msg = lines.filter(l => l !== '').join('\n')
+    const msg = lines.filter(l => l !== undefined).join('\n')
     window.open(`https://wa.me/919740271679?text=${encodeURIComponent(msg)}`, '_blank')
     closeModal()
     setForm({ name: '', phone: '', date: '', guests: '', delivery: 'venue', address: '', notes: '' })
@@ -356,7 +354,7 @@ export default function BulkOrderModal() {
       >
         {/* ── HEADER ── */}
         <div className="bulk-modal-header" style={{
-          background: 'linear-gradient(135deg, #2A1A0E 0%, #3C2512 100%)',
+          background: 'linear-gradient(135deg, #3D2A18 0%, #52351E 100%)',
           padding: '28px 28px 24px', flexShrink: 0, position: 'relative',
         }}>
           <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'linear-gradient(to right, transparent, rgba(201,150,62,0.8), transparent)' }} />
@@ -425,8 +423,8 @@ export default function BulkOrderModal() {
             <SectionLabel icon={<Truck size={13} />} label="Delivery Preference" />
             <div style={{ display: 'flex', gap: '10px', marginBottom: '14px' }}>
               {[
-                { value: 'venue',    label: '🏛️ At Restaurant / Pickup' },
-                { value: 'doorstep', label: '🚚 Doorstep Delivery' },
+                { value: 'venue',    label: 'At Restaurant / Pickup' },
+                { value: 'doorstep', label: 'Doorstep Delivery' },
               ].map(opt => (
                 <button key={opt.value} onClick={() => set('delivery', opt.value)} className="bulk-delivery-btn" style={{
                   flex: 1, height: '44px', padding: '0 12px', cursor: 'pointer',
@@ -463,7 +461,7 @@ export default function BulkOrderModal() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {bulkMenu.map((cat, catIdx) => (
                 <div key={cat.category} style={{ borderRadius: '8px', overflow: 'hidden', border: '1px solid rgba(28,16,8,0.1)' }}>
-                  <div className="bulk-cat-header" style={{ background: 'linear-gradient(135deg,#2A1A0E,#3C2512)', padding: '10px 16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div className="bulk-cat-header" style={{ background: 'linear-gradient(135deg,#3D2A18,#52351E)', padding: '10px 16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <Star size={11} color="var(--color-gold)" strokeWidth={2} />
                     <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', fontWeight: 700, color: 'var(--color-gold)', letterSpacing: '2px', textTransform: 'uppercase' }}>
                       {cat.category}
