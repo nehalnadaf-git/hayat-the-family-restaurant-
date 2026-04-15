@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     siteName: 'Hayat Family Restaurant',
     locale: 'en_IN',
     type: 'website',
-    images: [{ url: '/images/og/og-homepage.png', width: 1200, height: 630, alt: 'Hayat Family Restaurant Hubballi' }],
+    images: [{ url: '/images/og/og-homepage.jpg', width: 1200, height: 630, alt: 'Hayat Family Restaurant Hubballi — Authentic Mughal & Tandoor Cuisine' }],
   },
   twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true },
@@ -80,7 +80,7 @@ const schemaOrg = {
   priceRange: '₹₹',
   aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.5', reviewCount: '48' },
   hasMenu: 'https://hayatfamilyrestaurant.in/menu',
-  image: 'https://hayatfamilyrestaurant.in/images/og/og-homepage.png',
+  image: 'https://hayatfamilyrestaurant.in/images/og/og-homepage.jpg',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
