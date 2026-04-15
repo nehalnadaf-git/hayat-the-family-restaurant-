@@ -32,8 +32,4 @@ export const faqs: FAQ[] = [
     question: 'Do you offer bulk orders for events?',
     answer: 'Yes! We offer bulk orders per kilogram for catering events and celebrations. Options include Beef Biryani, Chicken Biryani, Mutton Biryani, Khushka, Veg Biryani, and gravies. Contact us via WhatsApp to discuss your requirements.',
   },
-  {
-    question: 'Can you arrange special occasions like birthdays or anniversaries?',
-    answer: 'Yes, we love helping make your special moments unforgettable! We arrange special table setups, customised decorations, and curated menus for birthdays, anniversaries, family gatherings, and corporate events. Contact us via WhatsApp to plan your celebration.',
-  },
 ]

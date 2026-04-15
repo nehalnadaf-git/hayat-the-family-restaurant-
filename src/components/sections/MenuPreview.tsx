@@ -1,9 +1,10 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { menuCategories } from '@/data/menu'
 import { ChevronLeft, ChevronRight, Utensils, Flame, Star, Crown } from 'lucide-react'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 const featured = [
   {
@@ -11,21 +12,21 @@ const featured = [
     tagline: 'Slow-cooked biryanis and bold beef preparations',
     items: ['Beef Biryani (Basmati)', 'Beef Barbeque', 'Beef Chilli', 'Beef Kadai', 'Beef Lahori'],
     slug: 'beef-starters',
-    image: '/images/food/beef-barbeque-premium.webp',
+    image: '/images/food/beef_barbeque.webp',
   },
   {
     name: 'Tandoori Kababs',
     tagline: 'Char-grilled masterpieces from our clay tandoor',
     items: ['Tandoori Chicken Full', 'Lazeez Kabab', 'Gulzari Kabab', 'Sholay Kabab', 'Murg Hariyali'],
     slug: 'tandoori-kababs',
-    image: '/images/food/tandoori-chicken.webp',
+    image: '/images/food/07_tandoori_chicken.webp',
   },
   {
     name: 'Chicken Starters',
     tagline: 'Sizzling chicken in every style — 20+ varieties',
     items: ['Chicken 65', 'Chicken Barbeque', 'Chicken Dragon', 'Chicken Satay', 'Chicken Lollipop'],
     slug: 'chicken-starters',
-    image: '/images/food/chicken-65-premium.webp',
+    image: '/images/food/chicken_65.webp',
   },
 ]
 
@@ -33,7 +34,7 @@ const vegItems = new Set(['Veg Biryani', 'Paneer Biryani', 'Paneer Butter Masala
 
 
 export default function MenuPreview() {
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useScrollAnimation()
   const [sidebarIdx, setSidebarIdx] = useState(0)
   const sidebarItems = [
     { title: 'Beef Specialties', items: ['Beef Biryani', 'Beef Kadai', 'Beef Roghan Josh'], desc: 'Slow-cooked beef in rich Mughal gravies — the heart of Hayat.' },
@@ -41,15 +42,6 @@ export default function MenuPreview() {
     { title: 'Chicken Delights', items: ['Chicken 65', 'Chicken Dragon', 'Chicken Satay'], desc: 'Over 20 chicken starter varieties — crispy, spiced, and bold.' },
     { title: 'Veg Favourites', items: ['Paneer Butter Masala', 'Shahi Paneer', 'Dal Tadka'], desc: 'Rich, aromatic vegetarian dishes crafted with equal care and passion.' },
   ]
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view') } }),
-      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
-    )
-    sectionRef.current?.querySelectorAll('.fade-up').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
 
   return (
     <section ref={sectionRef} style={{
@@ -64,7 +56,7 @@ export default function MenuPreview() {
 
       <div style={{ maxWidth: '1300px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header */}
-        <div className="fade-up" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '64px', flexWrap: 'wrap', gap: '20px' }}>
+        <div data-animate="fade-up" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '64px', flexWrap: 'wrap', gap: '20px' }}>
           <div>
             <div className="ornament ornament-dark" style={{ justifyContent: 'flex-start', marginBottom: '16px' }}>
               <span className="eyebrow-dark">Our Menu</span>
@@ -79,7 +71,7 @@ export default function MenuPreview() {
           </Link>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: '32px', alignItems: 'start' }} className="menu-preview-grid fade-up">
+        <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: '32px', alignItems: 'start' }} className="menu-preview-grid" data-animate="fade-up" data-delay="100">
           {/* Left Sidebar */}
           <div style={{
             background: 'rgba(255,255,255,0.75)',
@@ -122,7 +114,10 @@ export default function MenuPreview() {
           {/* Featured Category Cards — now with images */}
           <div className="menu-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' }}>
             {featured.map((cat, i) => (
-              <Link key={cat.slug} href={`/menu/${cat.slug}`} style={{ textDecoration: 'none' }}>
+              <Link key={cat.slug} href={`/menu/${cat.slug}`} style={{ textDecoration: 'none' }}
+                data-animate="blur-up"
+                data-delay={String(i * 120)}
+              >
                 <div className="menu-card" style={{
                   borderRadius: '6px',
                   overflow: 'hidden',

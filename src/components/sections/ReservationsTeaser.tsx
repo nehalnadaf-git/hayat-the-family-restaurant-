@@ -1,9 +1,9 @@
 'use client'
-import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { MessageCircle } from 'lucide-react'
 import { restaurant } from '@/data/restaurant'
 import { useBookingModal } from '@/contexts/BookingModalContext'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 const photos = [
   { src: '/images/restaurant/dining-hall.webp', alt: 'Hayat Dining Hall' },
@@ -13,17 +13,8 @@ const photos = [
 ]
 
 export default function ReservationsTeaser() {
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useScrollAnimation()
   const { openModal } = useBookingModal()
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view') } }),
-      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
-    )
-    sectionRef.current?.querySelectorAll('.fade-up').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
 
   return (
     <section ref={sectionRef} style={{
@@ -42,7 +33,7 @@ export default function ReservationsTeaser() {
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '80px', alignItems: 'center' }}>
           {/* Left */}
-          <div className="fade-up">
+          <div data-animate="fade-right">
             <div className="ornament ornament-dark" style={{ justifyContent: 'flex-start', marginBottom: '20px' }}>
               <span className="eyebrow-dark">Reserve Your Table</span>
             </div>
@@ -76,7 +67,7 @@ export default function ReservationsTeaser() {
           </div>
 
           {/* Right: 2×2 photo grid */}
-          <div className="fade-up" style={{ transitionDelay: '180ms' }}>
+          <div data-animate="fade-left" data-delay="150">
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
               {photos.map((p, i) => (
                 <div key={i} style={{

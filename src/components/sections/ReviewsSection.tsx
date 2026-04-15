@@ -1,20 +1,11 @@
 'use client'
-import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { reviews } from '@/data/reviews'
 import { Star, Quote } from 'lucide-react'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function ReviewsSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view') } }),
-      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
-    )
-    sectionRef.current?.querySelectorAll('.fade-up').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
+  const sectionRef = useScrollAnimation()
 
   const featured = reviews.slice(0, 3)
 
@@ -33,7 +24,7 @@ export default function ReviewsSection() {
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Header row */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '64px', flexWrap: 'wrap', gap: '32px' }}>
-          <div className="fade-up">
+          <div data-animate="fade-up">
             <div className="ornament ornament-dark" style={{ justifyContent: 'flex-start', marginBottom: '20px' }}>
               <span className="eyebrow-dark">Customer Reviews</span>
             </div>
@@ -44,7 +35,7 @@ export default function ReviewsSection() {
           </div>
 
           {/* Rating badge */}
-          <div className="fade-up" style={{ transitionDelay: '100ms', alignSelf: 'center' }}>
+          <div data-animate="fade-left" data-delay="150" style={{ alignSelf: 'center' }}>
             <div style={{
               background: 'rgba(255,255,255,0.85)',
               border: '1px solid rgba(203,152,115,0.3)',
@@ -73,7 +64,7 @@ export default function ReviewsSection() {
           {featured.map((review, i) => {
             const isHighlighted = i === 1
             return (
-              <div key={review.id} className="fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
+              <div key={review.id} data-animate="blur-up" data-delay={String(i * 120)}>
                 <div style={{
                   background: isHighlighted ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.75)',
                   border: `1px solid ${isHighlighted ? 'rgba(203,152,115,0.35)' : 'rgba(18,12,7,0.09)'}`,
@@ -142,7 +133,7 @@ export default function ReviewsSection() {
           })}
         </div>
 
-        <div className="fade-up" style={{ textAlign: 'right' }}>
+        <div data-animate="fade-up" data-delay="200" style={{ textAlign: 'right' }}>
           <Link href="/reviews" style={{
             fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 600,
             color: 'var(--color-copper)', textDecoration: 'none', letterSpacing: '1.5px',

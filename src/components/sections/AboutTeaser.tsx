@@ -1,24 +1,14 @@
 'use client'
-import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function AboutTeaser() {
-  const leftRef = useRef<HTMLDivElement>(null)
-  const rightRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view') } }),
-      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
-    )
-    if (leftRef.current) observer.observe(leftRef.current)
-    if (rightRef.current) observer.observe(rightRef.current)
-    return () => observer.disconnect()
-  }, [])
+  const sectionRef = useScrollAnimation()
 
   return (
-    <section 
+    <section
+      ref={sectionRef}
       id="about-teaser"
       style={{
         background: 'linear-gradient(160deg, #1C120A 0%, #241508 55%, #1C120A 100%)',
@@ -33,7 +23,7 @@ export default function AboutTeaser() {
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Eyebrow */}
-        <div ref={leftRef} className="fade-up about-header-region" style={{ marginBottom: '64px' }}>
+        <div data-animate="fade-up" className="about-header-region" style={{ marginBottom: '64px' }}>
           <div className="ornament" style={{ justifyContent: 'flex-start', marginBottom: '20px' }}>
             <span className="eyebrow">Our Story</span>
           </div>
@@ -41,7 +31,7 @@ export default function AboutTeaser() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '80px', alignItems: 'center' }}>
           {/* Left: Text */}
-          <div ref={leftRef} className="fade-up">
+          <div data-animate="fade-right">
             <h2 className="heading-section" style={{ color: 'var(--color-ivory)', marginBottom: '28px', maxWidth: '500px' }}>
               A Heritage of Mughal Flavour —{' '}
               <em style={{ fontStyle: 'italic', color: 'var(--color-gold-light)' }}>Crafted</em>{' '}
@@ -71,7 +61,7 @@ export default function AboutTeaser() {
           </div>
 
           {/* Right: Photo */}
-          <div ref={rightRef} className="fade-up" style={{ transitionDelay: '180ms' }}>
+          <div data-animate="fade-left" data-delay="150">
             <div style={{
               position: 'relative',
               aspectRatio: '4/5',

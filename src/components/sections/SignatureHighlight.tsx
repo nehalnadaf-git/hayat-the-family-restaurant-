@@ -1,19 +1,10 @@
 'use client'
-import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { signatureDishes } from '@/data/menu'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function SignatureHighlight() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view') } }),
-      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
-    )
-    sectionRef.current?.querySelectorAll('.fade-up').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
+  const sectionRef = useScrollAnimation()
 
   return (
     <section ref={sectionRef} style={{
@@ -29,7 +20,6 @@ export default function SignatureHighlight() {
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(203,152,115,0.15), transparent)', pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        {/* Header */}
         <div className="fade-up" style={{ textAlign: 'center', marginBottom: '72px' }}>
           <div className="ornament" style={{ marginBottom: '20px' }}>
             <span className="eyebrow">Hayat Specials</span>
@@ -43,7 +33,13 @@ export default function SignatureHighlight() {
         {/* Cards grid — no scroll on desktop, snap-scroll on mobile */}
         <div className="sig-cards-grid">
           {signatureDishes.map((dish, i) => (
-            <div key={dish.name} className="sig-card-item fade-up" style={{ transitionDelay: `${i * 90}ms` }}>
+            <div
+              key={dish.name}
+              className="sig-card-item"
+              data-animate="fade-up"
+              data-delay={String(i * 100)}
+              style={{ transitionDelay: `${i * 100}ms` }}
+            >
               <div style={{
                 background: 'rgba(255,255,255,0.03)',
                 border: '1px solid rgba(203,152,115,0.2)',

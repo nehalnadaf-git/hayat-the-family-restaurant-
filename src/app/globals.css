@@ -157,16 +157,19 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  width: min(85vw, 360px);
-  height: 100vh;
+  width: min(82vw, 340px);
+  height: 100dvh;
   background: var(--color-navy);
   border-left: 1px solid var(--color-border);
   z-index: 200;
   transform: translateX(100%);
-  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 340ms cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 20px 24px 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 .mobile-drawer.drawer-open {
   transform: translateX(0);
@@ -544,15 +547,176 @@ body {
   border-radius: 4px;
 }
 
-/* ===== SCROLL ANIMATIONS ===== */
+/* ===================================================
+   PREMIUM SCROLL ANIMATION SYSTEM
+   – 6 variants · GPU-accelerated · stagger support
+   – Respects prefers-reduced-motion
+   – Mobile-optimised (smaller transforms)
+   =================================================== */
+
+/* ── Shared defaults ── */
+[data-animate] {
+  --anim-duration:  0.72s;
+  --anim-ease:      cubic-bezier(0.16, 1, 0.3, 1);
+  --anim-delay:     0s;
+  opacity: 0;
+  will-change: transform, opacity;
+  transition:
+    opacity    var(--anim-duration) var(--anim-ease) var(--anim-delay),
+    transform  var(--anim-duration) var(--anim-ease) var(--anim-delay),
+    filter     var(--anim-duration) var(--anim-ease) var(--anim-delay);
+}
+[data-animate].in-view {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  will-change: auto;
+}
+
+/* ── 1. fade-up  (primary — replaces old .fade-up) ── */
+[data-animate="fade-up"],
 .fade-up {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(28px);
+  will-change: transform, opacity;
+  transition:
+    opacity   0.72s cubic-bezier(0.16, 1, 0.3, 1) var(--anim-delay, 0s),
+    transform 0.72s cubic-bezier(0.16, 1, 0.3, 1) var(--anim-delay, 0s);
 }
+[data-animate="fade-up"].in-view,
 .fade-up.in-view {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
+}
+
+/* ── 2. fade-down ── */
+[data-animate="fade-down"] {
+  transform: translateY(-28px);
+}
+
+/* ── 3. fade-left (slides in from right) ── */
+[data-animate="fade-left"] {
+  transform: translateX(40px);
+}
+
+/* ── 4. fade-right (slides in from left) ── */
+[data-animate="fade-right"] {
+  transform: translateX(-40px);
+}
+
+/* ── 5. scale-in ── */
+[data-animate="scale-in"] {
+  transform: scale(0.92);
+}
+
+/* ── 6. blur-up (premium reveal) ── */
+[data-animate="blur-up"] {
+  transform: translateY(20px);
+  filter: blur(8px);
+}
+
+/* ── 7. line-reveal (for headings / dividers) ── */
+[data-animate="line-reveal"] {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* ── Stagger delays via data attribute ── */
+[data-delay="100"] { --anim-delay: 0.10s; }
+[data-delay="150"] { --anim-delay: 0.15s; }
+[data-delay="200"] { --anim-delay: 0.20s; }
+[data-delay="250"] { --anim-delay: 0.25s; }
+[data-delay="300"] { --anim-delay: 0.30s; }
+[data-delay="400"] { --anim-delay: 0.40s; }
+[data-delay="500"] { --anim-delay: 0.50s; }
+[data-delay="600"] { --anim-delay: 0.60s; }
+[data-delay="700"] { --anim-delay: 0.70s; }
+[data-delay="800"] { --anim-delay: 0.80s; }
+
+/* ── Card / image hover lift (GPU accelerated) ── */
+.hover-lift {
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  will-change: auto;
+}
+
+/* ── Parallax image inner zoom ── */
+.parallax-img {
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.parallax-img:hover { transform: scale(1.04); }
+
+/* ── Gold shimmer line (decorative entrance) ── */
+@keyframes shimmer-line {
+  0%   { transform: scaleX(0); opacity: 0; }
+  60%  { opacity: 1; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+.shimmer-line {
+  animation: shimmer-line 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: left center;
+}
+
+/* ── Gold pulse glow (for CTAs / badges) ── */
+@keyframes gold-pulse {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(203,152,115,0); }
+  50%       { box-shadow: 0 0 0 10px rgba(203,152,115,0); }
+}
+
+/* ── Floating entrance for hero elements ── */
+@keyframes float-in {
+  0%   { opacity: 0; transform: translateY(18px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0)   scale(1); }
+}
+.float-in {
+  animation: float-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Word-by-word reveal ── */
+@keyframes word-rise {
+  0%   { opacity: 0; transform: translateY(110%); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.word-rise-wrap { overflow: hidden; display: inline-block; }
+.word-rise {
+  display: inline-block;
+  animation: word-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Reduced motion: skip transforms, keep fade ── */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  .fade-up,
+  .float-in,
+  .shimmer-line,
+  .word-rise {
+    transition:  opacity 0.4s ease !important;
+    animation:   none !important;
+    transform:   none !important;
+    filter:      none !important;
+    will-change: auto !important;
+  }
+}
+
+/* ── Mobile: smaller translateY so no layout shift risk ── */
+@media (max-width: 768px) {
+  [data-animate="fade-up"],
+  .fade-up               { transform: translateY(18px); }
+  [data-animate="fade-down"]  { transform: translateY(-18px); }
+  [data-animate="fade-left"]  { transform: translateX(24px); }
+  [data-animate="fade-right"] { transform: translateX(-24px); }
+  [data-animate="blur-up"]    { transform: translateY(12px); filter: blur(5px); }
+  [data-animate="scale-in"]   { transform: scale(0.95); }
+  /* Faster on mobile for snappiness */
+  [data-animate],
+  .fade-up {
+    --anim-duration: 0.58s;
+  }
 }
 
 /* ===== SNAP SCROLL ===== */

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { restaurant } from '@/data/restaurant'
 import { useBookingModal } from '@/contexts/BookingModalContext'
+import { useBulkOrderModal } from '@/contexts/BulkOrderModalContext'
 
 const navLinksLeft = [
   { label: 'Home',    href: '/'        },
@@ -35,7 +36,8 @@ export default function Header() {
   const [menuOpen,    setMenuOpen]    = useState(false)
   const pathname = usePathname()
   const menuRef  = useRef<HTMLDivElement>(null)
-  const { openModal } = useBookingModal()
+  const { openModal: openBookingModal } = useBookingModal()
+  const { openModal: openBulkOrderModal } = useBulkOrderModal()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 56)
@@ -149,7 +151,7 @@ export default function Header() {
 
             {/* CTA */}
             <button
-              onClick={() => openModal()}
+              onClick={() => openBookingModal()}
               className="hdr-cta"
             >
               Book a Table
@@ -180,26 +182,27 @@ export default function Header() {
       {/* ════════════════════════════════════════
           MOBILE DRAWER
       ════════════════════════════════════════ */}
-      <div className={`mobile-drawer ${drawerOpen ? 'drawer-open' : ''}`} style={{ background: '#221509' }}>
-        {/* Drawer header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '40px' }}>
+      <div className={`mobile-drawer ${drawerOpen ? 'drawer-open' : ''}`} style={{ background: '#1E1208' }}>
+
+        {/* ── Drawer header ── */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
           <div>
             <div style={{
-              fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: 700,
+              fontFamily: 'var(--font-display)', fontSize: '22px', fontWeight: 700,
               color: 'var(--color-gold)', letterSpacing: '5px', lineHeight: 1,
             }}>
               HAYAT
             </div>
             <div style={{
-              fontFamily: 'var(--font-body)', fontSize: '8px', fontWeight: 600,
-              color: 'rgba(250,246,240,0.4)', letterSpacing: '3.5px',
-              textTransform: 'uppercase', marginTop: '4px',
+              fontFamily: 'var(--font-body)', fontSize: '7.5px', fontWeight: 600,
+              color: 'rgba(250,246,240,0.38)', letterSpacing: '3px',
+              textTransform: 'uppercase', marginTop: '3px',
             }}>
               Family Restaurant
             </div>
             <div style={{
               fontFamily: 'var(--font-display)', fontStyle: 'italic',
-              fontSize: '13px', color: 'var(--color-teak)', marginTop: '4px', letterSpacing: '0.5px',
+              fontSize: '11.5px', color: 'var(--color-teak)', marginTop: '3px', letterSpacing: '0.4px',
             }}>
               Lazeez Pakwan
             </div>
@@ -210,22 +213,23 @@ export default function Header() {
             aria-label="Close menu"
             style={{
               background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(203,152,115,0.18)',
+              border: '1px solid rgba(203,152,115,0.2)',
               borderRadius: '50%',
-              width: '36px', height: '36px',
+              width: '32px', height: '32px',
               cursor: 'pointer',
               color: 'var(--color-ivory-muted)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flexShrink: 0,
             }}
           >
-            <X size={17} strokeWidth={1.5} />
+            <X size={15} strokeWidth={1.5} />
           </button>
         </div>
 
         {/* Divider */}
-        <div style={{ height: '1px', background: 'linear-gradient(to right, rgba(203,152,115,0.4), transparent)', marginBottom: '32px' }} />
+        <div style={{ height: '1px', background: 'linear-gradient(to right, rgba(203,152,115,0.35), transparent)', marginBottom: '16px' }} />
 
-        {/* Links */}
+        {/* ── Nav links ── */}
         <nav style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
           {[
             { label: 'Home',     href: '/'        },
@@ -235,65 +239,107 @@ export default function Header() {
             { label: 'Reviews',  href: '/reviews' },
             { label: 'FAQ',      href: '/faq'     },
             { label: 'Contact',  href: '/contact' },
-          ].map(l => (
+          ].map((l, i) => (
             <Link
               key={l.href}
               href={l.href}
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: '28px',
+                fontSize: '19px',
                 fontWeight: 600,
-                color: isActive(l.href) ? 'var(--color-gold-light)' : 'rgba(250,246,240,0.68)',
+                color: isActive(l.href) ? 'var(--color-gold-light)' : 'rgba(250,246,240,0.65)',
                 textDecoration: 'none',
-                padding: '11px 0',
+                padding: '8px 0',
                 borderBottom: '1px solid rgba(255,255,255,0.04)',
-                transition: 'color 200ms, padding-left 200ms',
+                transition: 'color 180ms, padding-left 180ms',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '12px',
+                gap: '10px',
+                animationDelay: drawerOpen ? `${i * 40 + 100}ms` : '0ms',
               }}
-              onMouseEnter={e => {
+              onTouchStart={e => {
                 if (!isActive(l.href)) {
                   ;(e.currentTarget as HTMLElement).style.color = 'var(--color-gold-light)'
                   ;(e.currentTarget as HTMLElement).style.paddingLeft = '6px'
                 }
               }}
-              onMouseLeave={e => {
+              onTouchEnd={e => {
                 if (!isActive(l.href)) {
-                  ;(e.currentTarget as HTMLElement).style.color = 'rgba(250,246,240,0.68)'
+                  ;(e.currentTarget as HTMLElement).style.color = 'rgba(250,246,240,0.65)'
                   ;(e.currentTarget as HTMLElement).style.paddingLeft = '0'
                 }
               }}
             >
               {isActive(l.href) && (
-                <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--color-gold)', flexShrink: 0 }} />
+                <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'var(--color-gold)', flexShrink: 0 }} />
               )}
               {l.label}
             </Link>
           ))}
+
+          {/* ── CTAs: side by side to save space ── */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: '20px' }}>
+            <button
+              onClick={() => { openBookingModal(); setDrawerOpen(false) }}
+              className="btn-primary"
+              style={{
+                justifyContent: 'center',
+                width: '100%',
+                cursor: 'pointer',
+                border: 'none',
+                fontSize: '10px',
+                padding: '12px 8px',
+                letterSpacing: '1.5px',
+              }}
+            >
+              Book a Table
+            </button>
+
+            <button
+              onClick={() => { openBulkOrderModal(); setDrawerOpen(false) }}
+              className="btn-secondary"
+              style={{
+                justifyContent: 'center',
+                width: '100%',
+                cursor: 'pointer',
+                fontSize: '10px',
+                padding: '12px 8px',
+                letterSpacing: '1.5px',
+              }}
+            >
+              Bulk Orders
+            </button>
+          </div>
+
+          {/* ── Footer info ── */}
+          <div style={{
+            marginTop: '20px',
+            paddingTop: '16px',
+            borderTop: '1px solid rgba(203,152,115,0.1)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '4px',
+          }}>
+            <a
+              href={restaurant.phoneHref}
+              style={{
+                fontFamily: 'var(--font-body)', fontSize: '12px',
+                color: 'var(--color-gold)', textDecoration: 'none',
+                letterSpacing: '0.5px', display: 'flex', alignItems: 'center', gap: '6px',
+              }}
+            >
+              <span style={{ opacity: 0.5, fontSize: '10px' }}>📞</span>
+              {restaurant.phone}
+            </a>
+            <span style={{
+              fontFamily: 'var(--font-body)', fontSize: '10.5px',
+              color: 'rgba(250,246,240,0.28)', letterSpacing: '0.3px',
+            }}>
+              Shah Bazar Road, Hubballi
+            </span>
+          </div>
         </nav>
 
-        <div style={{ height: '1px', background: 'linear-gradient(to right, rgba(203,152,115,0.2), transparent)', margin: '28px 0' }} />
-
-        <button
-          onClick={() => { openModal(); setDrawerOpen(false) }}
-          className="btn-primary"
-          style={{ justifyContent: 'center', width: '100%', cursor: 'pointer', border: 'none' }}
-        >
-          Book a Table
-        </button>
-
-        <div style={{ marginTop: '20px', textAlign: 'center' }}>
-          <a
-            href={restaurant.phoneHref}
-            style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--color-gold)', textDecoration: 'none', fontWeight: 600 }}
-          >
-            {restaurant.phone}
-          </a>
-          <div style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'rgba(200,184,154,0.4)', letterSpacing: '0.5px', marginTop: '4px' }}>
-            {restaurant.hoursShort}
-          </div>
-        </div>
       </div>
 
       {/* ════════════════════════════════════════

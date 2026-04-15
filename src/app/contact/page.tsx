@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { MapPin, Phone, Clock, MessageCircle, ExternalLink } from 'lucide-react'
 import { restaurant } from '@/data/restaurant'
+import ContactCTAs from './ContactCTAs'
 
 export const metadata: Metadata = {
   title: 'Contact Us | Hayat Family Restaurant Hubballi — Location & Hours',
@@ -105,14 +106,7 @@ export default function ContactPage() {
             </div>
 
             {/* CTAs */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-              <a href={restaurant.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                <MessageCircle size={18} /> Book via WhatsApp
-              </a>
-              <a href={restaurant.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ color: 'var(--color-navy)', borderColor: 'var(--color-navy)' }}>
-                <ExternalLink size={16} /> Get Directions
-              </a>
-            </div>
+            <ContactCTAs />
           </div>
 
           {/* Right: Map */}

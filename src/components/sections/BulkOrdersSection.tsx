@@ -1,9 +1,9 @@
 'use client'
-import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { restaurant } from '@/data/restaurant'
 import { MessageCircle, Phone, Package, Star } from 'lucide-react'
 import { useBulkOrderModal } from '@/contexts/BulkOrderModalContext'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 /* ── Bulk menu items ─────────────────────────────────────── */
 const bulkMenu = [
@@ -37,17 +37,8 @@ const bulkMenu = [
 ]
 
 export default function BulkOrdersSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useScrollAnimation()
   const { openModal } = useBulkOrderModal()
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view') }),
-      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
-    )
-    sectionRef.current?.querySelectorAll('.fade-up').forEach(el => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
 
   return (
     <section
@@ -72,7 +63,7 @@ export default function BulkOrdersSection() {
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
         {/* ════ HEADER ════ */}
-        <div className="fade-up" style={{ textAlign: 'center', marginBottom: '64px' }}>
+        <div data-animate="blur-up" style={{ textAlign: 'center', marginBottom: '64px' }}>
           <div className="ornament" style={{ marginBottom: '20px' }}>
             <span className="eyebrow">Catering & Bulk Orders</span>
           </div>
@@ -91,11 +82,11 @@ export default function BulkOrdersSection() {
           style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '32px', alignItems: 'start' }}
         >
           {/* ── Left: Photo banner + Pricing table ── */}
-          <div className="fade-up">
+          <div data-animate="fade-right">
             {/* Photo banner */}
             <div style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden', marginBottom: '24px', aspectRatio: '21/8' }}>
               <Image
-                src="/images/food/beef-biryani.webp"
+                src="/images/food/19_bulk_beef_biryani.webp"
                 alt="Hayat Bulk Biryani Catering"
                 fill
                 sizes="(max-width:900px) 100vw, 750px"
@@ -162,7 +153,7 @@ export default function BulkOrdersSection() {
           </div>
 
           {/* ── Right: CTA Panel (sticky) ── */}
-          <div className="fade-up" style={{ position: 'sticky', top: '96px' }}>
+          <div data-animate="fade-left" data-delay="200" style={{ position: 'sticky', top: '96px' }}>
             <div style={{
               background: 'linear-gradient(145deg, rgba(203,152,115,0.13) 0%, rgba(203,152,115,0.05) 100%)',
               border: '1px solid rgba(203,152,115,0.38)',

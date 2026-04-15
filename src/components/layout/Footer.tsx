@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { MapPin, Phone, Clock, Navigation } from 'lucide-react'
+import { MapPin, Phone, Clock, Navigation, MessageCircle } from 'lucide-react'
 import { restaurant } from '@/data/restaurant'
 
 const quickLinks = [
@@ -81,14 +81,27 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Get Directions CTA */}
-            <a href={restaurant.googleMapsUrl} target="_blank" rel="noopener noreferrer"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 22px', border: '1px solid rgba(203,152,115,0.38)', borderRadius: '2px', fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--color-gold)', textDecoration: 'none', transition: 'all 250ms ease' }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(203,152,115,0.10)'; el.style.borderColor = 'rgba(203,152,115,0.7)' }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.borderColor = 'rgba(203,152,115,0.38)' }}
-            >
-              <Navigation size={13} /> Get Directions
-            </a>
+            {/* Footer CTAs */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '36px' }}>
+              <a 
+                href="https://wa.me/919740271679?text=Hii%20Hayat%20family%20restaurant"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 22px', background: 'var(--color-navy)', border: '1px solid var(--color-gold)', borderRadius: '2px', fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--color-gold)', textDecoration: 'none', transition: 'all 250ms ease' }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(203,152,115,0.15)' }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'var(--color-navy)' }}
+              >
+                <MessageCircle size={14} /> whatsapp
+              </a>
+
+              <a href={restaurant.googleMapsUrl} target="_blank" rel="noopener noreferrer"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 22px', border: '1px solid rgba(203,152,115,0.38)', borderRadius: '2px', fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--color-gold)', textDecoration: 'none', transition: 'all 250ms ease' }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(203,152,115,0.10)'; el.style.borderColor = 'rgba(203,152,115,0.7)' }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'transparent'; el.style.borderColor = 'rgba(203,152,115,0.38)' }}
+              >
+                <Navigation size={13} /> Get Directions
+              </a>
+            </div>
           </div>
 
           {/* ── Col 2: Quick Links ── */}

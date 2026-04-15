@@ -3,8 +3,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { restaurant } from '@/data/restaurant'
+import { useBookingModal } from '@/contexts/BookingModalContext'
 
 export default function HeroSection() {
+  const { openModal } = useBookingModal()
   return (
     <section
       id="hero"
@@ -75,10 +77,10 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.55, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
           >
-            <a href={restaurant.whatsapp} target="_blank" rel="noopener noreferrer" className="hero-cta-pill">
+            <button onClick={() => openModal()} className="hero-cta-pill">
               <span style={{ fontSize: '16px', lineHeight: 1 }}>↓</span>
               <span>RESERVE A<br />TABLE</span>
-            </a>
+            </button>
           </motion.div>
         </div>
 
@@ -133,7 +135,7 @@ export default function HeroSection() {
           #hero { padding-top: 64px; min-height: auto !important; padding-bottom: 0; }
           #hero .hero-text-region { padding-top: 20px; padding-bottom: 16px; justify-content: center !important; flex: none !important; }
           #hero .hero-image-wrap { aspect-ratio: 4/3 !important; min-height: 220px !important; max-height: 44vh !important; }
-          #hero .tag-pill { font-size: 11px; padding: 5px 12px; margin-bottom: 14px; }
+          #hero .tag-pill { font-size: 9px; padding: 4px 10px; margin-bottom: 14px; letter-spacing: 0.2px; }
           #hero .hero-banner-desktop { display: none !important; }
           #hero .hero-banner-mobile { display: block !important; }
         }
