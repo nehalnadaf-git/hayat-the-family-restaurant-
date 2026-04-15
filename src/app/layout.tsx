@@ -1,6 +1,6 @@
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import type { Metadata, Viewport } from 'next'
-import InstallBanner from '@/components/pwa/InstallBanner'
+
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -104,7 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             <main>{children}</main>
             <Footer />
-            <InstallBanner />
+
             <BookingModal />
             <BulkOrderModal />
           </BookingModalProvider>
